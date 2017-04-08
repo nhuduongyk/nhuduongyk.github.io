@@ -1,0 +1,118 @@
+/* Section Header */  
+	.navbar {
+		border-radius: 0px;
+		letter-spacing: 2px;
+		opacity: 0.5;
+		text-shadow: -1px -1px white;
+	}
+	.navbar-default {
+		background-image: -webkit-linear-gradient(#fad6a4 50%,#fad6a4  100%);
+		background-image: -o-linear-gradient(#fad6a4 50%,#fad6a4  100%);
+		background-image: linear-gradient(#fad6a4 50%,#fad6a4  100%) !important;
+		border-color: #2C1601;
+		margin-left: 0px;
+		margin-right: 0px;
+		margin-bottom: 0px; 
+		}
+  
+	.navbar-brand img {
+    display: inline !important;
+	}
+
+	.navbar-brand {
+		font-size: 25px;
+    	display: inline;
+    	color: white !important;
+	}
+	
+  /* button*/
+   .btn {
+	   	border-color: #fff;
+		opacity: 0.5;
+		border-radius: 0px;
+   }
+  
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  };
+  .container-fluid {
+          position: relative;
+  };
+
+
+/* Section Footer */
+footer {
+		background-color: #FAD6A4;
+		padding: 15px;
+		color: #494949;
+	}
+footer> hr {
+	border: 0.8px solid #494949;	 
+	margin-left: -5%; 
+}
+	.flex-container {
+		display: -webkit-flex; /* Safari */
+		display: flex;
+		-webkit-box-orient: horizontal;
+    	-moz-box-orient: horizontal;
+   		/*-box-orient: horizontal;*/
+		-webkit-flex-direction: row; /* Safari */
+		flex-direction:         row;
+		-webkit-justify-content: space-between; /* Safari */
+		justify-content:         space-between;
+		-webkit-align-items: center; /* Safari */
+		align-items:         center;
+	}
+	.item-logo {
+		
+		margin-left: 20px;
+	}
+
+	.item-info {	
+		-webkit-flex-grow: 2; /* Safari */
+		flex-grow:         2;
+	}
+	
+	
+	.item-contact> a {
+		margin-right: 15px;
+		margin-top: -20px;
+		text-decoration: none;
+		color: #494949;
+		font-size: 18px;
+
+	}
+
+	.item-contact> a:hover, .item-contact> a:focus {
+		color: #c44b2f;
+
+	}
+
+	.item-contact>.btn-lg {
+		padding: 15px;
+		background-color: #fad6a4;
+		border: 1px solid #b94e48;
+		color: #494949;
+		margin-top: -15px;
+	}
+	.item-contact>.btn:hover, .item-contact>.btn:focus  {
+		
+		background-color: #b94e48;
+		color: white;
+	}
+	.item-social {
+		padding: 0 20px;
+		margin-top: -15px;
+	}
+	.item-social> a {
+		color:  #494949;
+	}
+
+	.item-social> a:hover, .item-social> a:focus {
+		color: #c44b2f;
+	}
+	#logo {
+		width: 75px;
+	}
