@@ -1,56 +1,153 @@
-/* Section Header */  
+
+/* Section Header */
+	* {
+		border-radius: 0px !important;
+	}
+	nav {
+		position: relative;
+		padding: 7px 0px;
+		
+	}
 	.navbar {
 		border-radius: 0px;
 		letter-spacing: 2px;
-		opacity: 0.5;
 		text-shadow: -1px -1px white;
 	}
+	
+	.nav>li {
+    display: inline; 
+	}	
+	
 	.navbar-default {
-		background-image: -webkit-linear-gradient(#fad6a4 50%,#fad6a4  100%);
-		background-image: -o-linear-gradient(#fad6a4 50%,#fad6a4  100%);
-		background-image: linear-gradient(#fad6a4 50%,#fad6a4  100%) !important;
+		background-image: -webkit-linear-gradient(#242D3C 50%,#242D3C  100%) !important;
+		background-image: -o-linear-gradient(#242D3C 50%,#242D3C  100%) !important;
+		background-image: linear-gradient(#242D3C 50%, #242D3C  100%) !important;
 		border-color: #2C1601;
 		margin-left: 0px;
 		margin-right: 0px;
 		margin-bottom: 0px; 
 		}
-  
+	.input-group {
+		width: 350px;
+	}
+	
 	.navbar-brand img {
     display: inline !important;
+	border-radius: 50% !important;
 	}
-
+	#logo {
+		width: 65px;
+		height: 65px;
+	}
+	a> #logo {
+		margin-top: -22px;
+	}
 	.navbar-brand {
 		font-size: 25px;
     	display: inline;
     	color: white !important;
 	}
+	.navbar-nav>li>a {
+		padding-top: 25px;
+		margin-top: 0;
+		padding-bottom: 5px;
+	}
+	.navbar li a, .navbar  { 
+    	color: white !important;
+  	}
+  	.navbar-nav> li a:hover {
+    	color: #FCAD03 !important;
+    	text-shadow: -1px -1px #FCAD03;
+	  }
 	
+	#search {
+		position: absolute;
+		left: 95px;
+		top: 10px;
+	}
+	navbar-inverse .navbar-toggle .icon-bar {
+    	background-color: #000000; 
+		}
+	#cart {
+		top: 5px;
+		right: 5px;
+	}
+	#signUp {
+		top: 5px;
+		left: 5px;
+	}
   /* button*/
-   .btn {
-	   	border-color: #fff;
-		opacity: 0.5;
-		border-radius: 0px;
+   .btn-warning {
+        background-image: -webkit-linear-gradient(#f0ad4e 50%,#f0ad4e 100%) !important;
+		background-image: -o-linear-gradient(#f0ad4e 50%,#f0ad4e  100%) !important;
+		background-image: linear-gradient(#f0ad4e 50%, #f0ad4e  100%) !important;
+		border-radius: 0px !important;
+		background-color: #f0ad4e;
+		border-color: #f0ad4e !important;
    }
-  
+	.btn-info {
+		background-image: -webkit-linear-gradient(#242D3C 50%,#242D3C 100%) !important;
+		background-image: -o-linear-gradient(#242D3C 50%,#242D3C  100%) !important;
+		background-image: linear-gradient(#242D3C 50%, #242D3C 100%) !important;
+		border-radius: 0px !important;
+		background-color: #242D3C !important;
+		border-color: #f0ad4e !important;
+	}
   .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
       width: 70%;
       margin: auto;
-  };
+  }
+  .carousel {
+	  max-width: 85%;
+	  left: 50px;
+  }
   .container-fluid {
-          position: relative;
-  };
-
+      position: relative;
+  }
+  .thumbnail-details {
+	  max-width: 80%;
+	  margin: 20px 0px 20px 35px;
+	  padding: 2px;
+  }
+  .row-details {
+	  margin-right: 20px !important;
+      margin-left:  20px !important;
+  }
+  #description, #additional {
+	  margin: 20px 0px;
+  }
+  .products {
+	  margin: 30px 0px 0px 20px;
+  }
+  textarea {
+	 	border-color: #ccc;
+	  	padding: 10px 17px;
+  }
+  textarea:focus, textarea:focusin {
+	  	border-color: transparent !important;
+  }
+  .btn-md {
+		float: right !important;
+		position: relative;
+		left: -35px;
+		padding-left: 15px;
+		padding-right: 15px;
+		font-size: 16px !important;
+  }
 
 /* Section Footer */
 footer {
-		background-color: #FAD6A4;
+		
 		padding: 15px;
-		color: #494949;
+		color: #999;
 	}
 footer> hr {
-	border: 0.8px solid #494949;	 
-	margin-left: -5%; 
+	border: 0.8px solid #999;	 
+}
+.item-logo > #logo {
+	margin-top: -10px;
+	margin-right: 10px;
 }
 	.flex-container {
 		display: -webkit-flex; /* Safari */
@@ -76,14 +173,7 @@ footer> hr {
 	}
 	
 	
-	.item-contact> a {
-		margin-right: 15px;
-		margin-top: -20px;
-		text-decoration: none;
-		color: #494949;
-		font-size: 18px;
-
-	}
+	
 
 	.item-contact> a:hover, .item-contact> a:focus {
 		color: #c44b2f;
@@ -92,9 +182,9 @@ footer> hr {
 
 	.item-contact>.btn-lg {
 		padding: 15px;
-		background-color: #fad6a4;
+		background-color: #242D3C;
 		border: 1px solid #b94e48;
-		color: #494949;
+		color: #999;
 		margin-top: -15px;
 	}
 	.item-contact>.btn:hover, .item-contact>.btn:focus  {
@@ -107,12 +197,15 @@ footer> hr {
 		margin-top: -15px;
 	}
 	.item-social> a {
-		color:  #494949;
+		color:  #999;
 	}
 
 	.item-social> a:hover, .item-social> a:focus {
 		color: #c44b2f;
 	}
-	#logo {
-		width: 75px;
+	nav> div> a> img> #logo {
+		width: 60px;
+		position: absolute;
+		top: -15px;
 	}
+	
