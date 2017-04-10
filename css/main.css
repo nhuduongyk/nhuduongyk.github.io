@@ -93,6 +93,19 @@
 		background-color: #242D3C !important;
 		border-color: #f0ad4e !important;
 	}
+	ol {
+		list-style: none;
+	}
+	ol > li > a {
+		color: #000;
+	}
+	ol > li > a:hover, ol > li > a:focus{
+		color: #f0ad4e;
+		text-decoration: none;
+	}
+	.panel-info {
+		border-color: transparent !important;
+	}
   .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
       width: 70%;
@@ -135,7 +148,12 @@
 		padding-right: 15px;
 		font-size: 16px !important;
   }
-
+    ul.nav-tabs {
+	  margin-bottom: 20px;
+  }
+  .item > img {
+	  height: 300px !important;
+  }
 /* Section Footer */
 footer {
 		
