@@ -24,12 +24,19 @@
             font-family: Lato;
             src: url(fonts/UbuntuMono-R.ttf);
         }
+        
+        @font-face {
+            font-family: MYRIADPRO;
+            src: url(fonts/MYRIADPRO.otf);
+        }
     </style>
 </head>
 
-<body>
+<body ng-app="myApp">
     <!--Section Header-->
+    <div ng-view>
 
+    </div>
     <header>
 
         <nav class="navbar navbar-fluid navbar-fixed-top navbar-mine" role="navigation">
@@ -59,10 +66,10 @@
             <div class="collapse navbar-collapse" id="myNavbar">
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" class="active">HOME</a></li>
+                    <li><a href="#/" class="active">HOME</a></li>
                     <li><a href="#">ABOUT</a></li>
-                    <li><a href="#">BOOKS</a></li>
-                    <li><a href="#">CONTACT</a></li>
+                    <li><a href="#books">BOOKS</a></li>
+                    <li><a href="#admin">ADMIN</a></li>
                     <button id="cart" class="btn btn-cart"><i class="fa fa-shopping-cart"></i> Cart</button>
                     <button id="signUp" class="btn btn-cart">Sign Up</button>
                 </ul>
@@ -91,7 +98,7 @@
             <div class="col-md-2 sidebar">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h5><b>BROWSE BOOKS</b></h5>
+                        <h4><b>BROWSE BOOKS</b></h4>
                     </div>
                     <div class="panel-body">
                         <h5><b>Category</b></h5>
@@ -116,16 +123,6 @@
                             <li><a>Novels</a></li>
                             <li><a>Children's Books</a></li>
                         </ol>
-                        <hr/>
-
-                        <h5><b>Top Author</b></h5>
-                        <ol>
-                            <li><a>J.K.Rowling</a></li>
-                            <li><a>Jeffery Deaver</a></li>
-                            <li><a>Jeffery Deavery</a></li>
-                            <li><a>Jeffery Deaver</a></li>
-                        </ol>
-
                     </div>
                 </div>
             </div>
@@ -155,7 +152,7 @@
                                             <img src="https://downloadsach.com/wp-content/uploads/2016/01/Trang-lanh-Jeffery-Deaver-1.jpg" alt="The Cold Moon" style="width:90%; ">
                                             <div class="caption text-center">
                                                 <h5><b>The Cold Moon</b></h5>
-                                                <h6 style="margin-top: 50px;">Jeffery Deaver</h6>
+                                                <h6>Jeffery Deaver</h6>
                                                 <h5>$12.00</h5>
                                             </div>
                                         </a>
@@ -164,11 +161,11 @@
 
                                 <div class="col-md-3">
                                     <div class="thumbnail">
-                                        <a href="#" target="_blank">
+                                        <a href="#books">
                                             <img src="img/ak.jpg" alt="Trời Vẫn Còn Xanh Em Vẫn Còn Anh" style="width:90%; ">
                                             <div class="caption text-center">
                                                 <h5><b>Trời Vẫn Còn Xanh Em Vẫn Còn Anh</b></h5>
-                                                <h6 style="margin-top: 20px;">Anh Khang</h6>
+                                                <h6>Anh Khang</h6>
                                                 <h5>$12.00</h5>
                                             </div>
                                         </a>
@@ -177,11 +174,11 @@
 
                                 <div class="col-md-3">
                                     <div class="thumbnail">
-                                        <a href="#" target="_blank">
+                                        <a href="#books">
                                             <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png" alt="And Then There Were None" style="width:90%;">
                                             <div class="caption text-center">
                                                 <h5><b>And Then There Were None</b></h5>
-                                                <h6 style="margin-top: 43px;">Agatha Christie</h6>
+                                                <h6>Agatha Christie</h6>
                                                 <h5>$12.00</h5>
                                             </div>
                                         </a>
@@ -194,7 +191,7 @@
                                             <img src="img/sherlock1.jpg" alt="The Adventure of Sherlock Holmes" style="width:90%;">
                                             <div class="caption text-center">
                                                 <h5><b>The Adventure of Sherlock Holmes</b></h5>
-                                                <h6 style="margin-top: 21px;">Conan Doyle</h6>
+                                                <h6>Conan Doyle</h6>
                                                 <h5>$12.00</h5>
                                             </div>
                                         </a>
@@ -210,8 +207,8 @@
                                             <img src="http://www.brandsynario.com/wp-content/uploads/harry-potter.jpeg" alt="Harry Potter & The Cursed Child" style="width:90%;">
                                             <div class="caption text-center">
                                                 <h5><b>Harry Potter & The Cursed Child</b></h4>
-                                                    <h5>J.K Rowling</h5>
-                                                    <h4>$12.00</h4>
+                                                    <h6>J.K Rowling</h6>
+                                                    <h5>$12.00</h5>
                                             </div>
                                         </a>
                                     </div>
@@ -223,8 +220,8 @@
                                             <img src="img/ak.jpg" alt="Trời Vẫn Còn Xanh Em Vẫn Còn Anh" style="width:90%;">
                                             <div class="caption text-center">
                                                 <h5><b>Trời Vẫn Còn Xanh Em Vẫn Còn Anh</b></h5>
-                                                <h5>Anh Khang</h5>
-                                                <h4>$12.00</h4>
+                                                <h6>Anh Khang</h6>
+                                                <h5>$12.00</h5>
                                             </div>
                                         </a>
                                     </div>
@@ -236,8 +233,8 @@
                                             <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png" alt="And Then There Were None" style="width:90%;">
                                             <div class="caption text-center">
                                                 <h5><b>And Then There Were None</b></h5>
-                                                <h5>Agatha Christie</h5>
-                                                <h4>$12.00</h4>
+                                                <h6>Agatha Christie</h6>
+                                                <h5>$12.00</h5>
                                             </div>
                                         </a>
                                     </div>
@@ -249,8 +246,8 @@
                                             <img src="img/sherlock1.jpg" alt="The Adventure of Sherlock Holmes" style="width:90%;">
                                             <div class="caption text-center">
                                                 <h5><b>The Adventure of Sherlock Holmes</b></h5>
-                                                <h5>Conan Doyle</h5>
-                                                <h4>$12.00</h4>
+                                                <h6>Conan Doyle</h6>
+                                                <h5>$12.00</h5>
                                             </div>
                                         </a>
                                     </div>
@@ -264,8 +261,8 @@
                                             <img src="http://www.suzannecollinsbooks.com/images/Mockingjay-Movie-Tie-In-330.jpg" alt="Mockingjay" style="width:90%;">
                                             <div class="caption text-center">
                                                 <h5><b>The Hunger Game: Mockingjay</b></h4>
-                                                    <h5>Suzanne Collins</h5>
-                                                    <h4>$12.00</h4>
+                                                    <h6>Suzanne Collins</h6>
+                                                    <h5>$12.00</h5>
                                             </div>
                                         </a>
                                     </div>
@@ -277,8 +274,8 @@
                                             <img src="img/ak.jpg" alt="Nature" style="width:90%">
                                             <div class="caption text-center">
                                                 <h5><b>Trời Vẫn Còn Xanh Em Vẫn Còn Anh</b></h5>
-                                                <h5>Anh Khang</h5>
-                                                <h4>$12.00</h4>
+                                                <h6>Anh Khang</h6>
+                                                <h5>$12.00</h5>
                                             </div>
                                         </a>
                                     </div>
@@ -290,8 +287,8 @@
                                             <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png" alt="Nature" style="width:90%;">
                                             <div class="caption text-center">
                                                 <h5><b>And Then There Were None</b></h5>
-                                                <h5>Agatha Christie</h5>
-                                                <h4>$12.00</h4>
+                                                <h6>Agatha Christie</h6>
+                                                <h5>$12.00</h5>
                                             </div>
                                         </a>
                                     </div>
@@ -300,11 +297,11 @@
                                 <div class="col-md-3">
                                     <div class="thumbnail">
                                         <a href="#" target="_blank">
-                                            <img src="img/sherlock1.jpg" alt="Nature" style="width:90%; height: 255px">
+                                            <img src="img/sherlock1.jpg" alt="Nature" style="width:90%">
                                             <div class="caption text-center">
                                                 <h5><b>The Adventure of Sherlock Holmes</b></h5>
-                                                <h5>Conan Doyle</h5>
-                                                <h4>$12.00</h4>
+                                                <h6>Conan Doyle</h6>
+                                                <h5>$12.00</h5>
                                             </div>
                                         </a>
                                     </div>
@@ -326,39 +323,45 @@
     </div>
     <!--Section Details-->
     <div class="container container-title">
+
         <div class="row row-title">
             <div class="col-md-4 col-img">
                 <div class="thumbnail thumbnail-details">
                     <img src="http://www.brandsynario.com/wp-content/uploads/harry-potter.jpeg" alt="Harry Potter & The Cursed Child" style="width:100%">
                 </div>
             </div>
-
-            <div class="col-md-8 col-title">
+            <div class="col-md-1 col-offset-1 col-xs-0 col-break">
+            </div>
+            <div class="col-md-7 col-title">
                 <h3>Harry Potter & The Cursed Child</h3>
                 <h5>J.K Rowling</h5>
                 <hr/>
                 <h2>$12.00</h2>
                 <h5>Bìa mềm</h5>
                 <hr/>
-                <button class="btn btn-info"><i class="fa fa-shopping-cart"></i> ADD TO CART </button>
+                <button class="btn btn-buy"><i class="fa fa-shopping-cart"></i> ADD TO CART </button>
             </div>
         </div>
-
-
+    </div>
+    <div class="container container-details">
         <div class="row row-details">
+
             <ul class="nav nav-pills">
                 <li class="active"><a data-toggle="pill" href="#description">Description</a></li>
                 <li><a data-toggle="pill" href="#additional">Addtional Information</a></li>
             </ul>
-            <div class="tab-contents">
+
+            <div class="tab-content">
+
                 <div id="description" class="tab-pane fade in active">
                     <p>This is the braille version of the international bestseller. "Harry Potter & The Cursed Child" has reached a level of best-sellerdom never before achieved by a children's novel in the United States--The New York Times, April 1, 1999.
                         If you haven't heard about this book, you've been asleep. Written for 8 to 12-year olds, "Harry Potter" appeals equally to adults. Who is Harry Potter? Harry Potter is an old-fashioned hero. He learns that choices show more of
-                        who one is than abilities. If you're looking for magic and adventure, read this book. Four volumes in braillle.</p>
-                    <p>This is the braille version of the international bestseller. "Harry Potter & The Cursed Child" has reached a level of best-sellerdom never before achieved by a children's novel in the United States--The New York Times, April 1, 1999.
-                        If you haven't heard about this book, you've been asleep. Written for 8 to 12-year olds, "Harry Potter" appeals equally to adults. Who is Harry Potter? Harry Potter is an old-fashioned hero. He learns that choices show more of
-                        who one is than abilities. If you're looking for magic and adventure, read this book. Four volumes in braillle.</p>
+                        who one is than abilities. If you're looking for magic and adventure, read this book. Four volumes in braillle.<br/> This is the braille version of the international bestseller. "Harry Potter & The Cursed Child" has reached a level
+                        of best-sellerdom never before achieved by a children's novel in the United States--The New York Times, April 1, 1999. If you haven't heard about this book, you've been asleep. Written for 8 to 12-year olds, "Harry Potter" appeals
+                        equally to adults. Who is Harry Potter? Harry Potter is an old-fashioned hero. He learns that choices show more of who one is than abilities. If you're looking for magic and adventure, read this book. Four volumes in braillle.
+                    </p>
                 </div>
+
                 <div id="additional" class="tab-pane fade">
                     <table class="table table-striped table-boredered">
                         <tbody>
@@ -394,86 +397,92 @@
                         </tbody>
                     </table>
                 </div>
+
             </div>
-
-            <button class="btn btn-info"><i class="fa fa-shopping-cart"></i> BUY </button>
+            <button class="btn btn-buy"><i class="fa fa-shopping-cart"></i> BUY </button>
         </div>
+    </div>
+    <!--Mupti.. Plugin-->
+    <div class="container">
+        <div class="row row-pro">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="products">PRODUCTS</h4>
+                </div>
 
-        <h4 class="products">Products</h4>
-        <br/>
-        <hr/>
-        <div class="row">
-            <!--Mupti.. Plugin-->
-        </div>
+                <div class="panel-body">
+                    <hr/>
+                    <hr/>
+                </div>
 
-        <div class="row">
-            <div class="col-md-11" style="left: 20px;">
-                <form>
-                    <label>Leave Your Comments</label><br/>
-
-                    <textarea cols="136" rows="3" placeholder="Enter your comments"></textarea>
-
-                    <button class="btn btn-info btn-md" type="submit">Post</button>
-                </form>
-            </div>
-        </div>
-        <hr/>
-        <div class="col-md-2 text-center">
-            <div class="thumbnail">
-                <h4>User</h4>
-                <img src="img/user.png" class="img-circle img-responsive" width="80%">
-            </div>
-        </div>
-        <div class="col-md-offset-1">
-        </div>
-        <div class="col-md-9">
-            <div class="well">
-                <p>Just forgot that I had mention something about someone to someone about how I forgot something, but now I forgot it. Ah! forget it! Oh wait. I remember.. no I don't</p>
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="row comt">
+            <hr/>
+            <div class="col-md-12" style="left: 20px;">
+                <form>
+                    <label>Leave Your Comments</label><br/>
+
+                    <textarea cols="138" rows="3" placeholder="Enter your comments"></textarea>
+
+                    <button class="btn btn-cart btn-md" type="submit">Post</button>
+                </form>
+            </div>
+            <hr/>
+
+            <div class="col-md-2 text-center">
+                <div class="thumbnail thumbnail-comt">
+                    <h4>User</h4>
+                    <img src="img/user.png" class="img-circle img-responsive" width="65%">
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="well well-comt">
+                    <p>Just forgot that I had mention something about someone to someone about how I forgot something, but now I forgot it. Ah! forget it! Oh wait. I remember.. no I don't</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!--Section Books-->
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-left">
+            <div class="col-md-2 col-left text-center">
                 <div class="category">
-                    <div class="block-title">
-                        <strong><span>BROWSE BOOKS</span></strong>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4><b>BROWSE BOOKS</b></h4>
+                        </div>
+                        <div class="panel-body">
+                            <h5><b>Genres</b></h5>
+                            <ol>
+                                <li><a>Horror</a></li>
+                                <li><a>Fantasy</a></li>
+                                <li><a>Photography</a></li>
+                                <li><a>Economics</a></li>
+                                <li><a>Computing</a></li>
+                                <li><a>Crime & Thriller</a></li>
+                                <li><a>Science Fiction</a></li>
+                                <li><a>Novels</a></li>
+                                <li><a>Children's Books</a></li>
+                            </ol>
+                            <hr/>
+                            <div class="ads">
+                                <img src="img/ads.jpg" style="max-width: 100%;" alt="">
+                            </div>
+                        </div>
                     </div>
-                    <hr/>
-                    <div class="block-list">
-                        <h5><b>Genres</b></h5>
-                        <ol>
-                            <li><a>Art</a></li>
-                            <li><a>Horror</a></li>
-                            <li><a>Fantasy</a></li>
-                            <li><a>Photography</a></li>
-                            <li><a>Economics</a></li>
-                            <li><a>Computing</a></li>
-                            <li><a>Crime & Thriller</a></li>
-                            <li><a>Science Fiction</a></li>
-                            <li><a>Novels</a></li>
-                            <li><a>Children's Books</a></li>
-                        </ol>
-
-                        <div class="ads">
-                            <img src="img/ads.jpg" style="max-width: 100%;" alt="">
+                    <div class="panel-info">
+                        <div class="panel-heading">
+                            <h5><b>POPULAR TAGS</b></h5>
                         </div>
 
-                        <div class="block-title">
-                            <strong><span>POPULAR BOOKS<span><strong>
-                        </div>
-                        <hr/>
-                        <div> <!--Muptiplies Plugin-->
-                        </div>
 
-                        <div class="block-title">
-                            <strong><span>POPUPLAR TAGS<span><strong>
-                        </div>
-                        <hr/>
-                        <div class="block-tags">
+                        <div class="panel-body">
                             <span class="label label-warning">Hot</span>
                             <span class="label label-primary">Best</span>
                             <span class="label label-success">Adventure</span>
@@ -481,150 +490,207 @@
                             <span class="label label-warning">Drama</span>
                             <span class="label label-danger">Seller</span>
                         </div>
-                    </div>   
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h5><b>POPULAR BOOKS</b></h5>
+                        </div>
+
+                        <div class="panel-body">
+                            <!--Muptiplies Plugin-->
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
 
-            <div class="col-md-9">
-                
-                <h2>Books</h2>
-                <hr/>
-                <div class="row">
-                    <div class="col-md-3" style="left: 0px;" >
-                        <div class="book-gallery">
-                            <a href="#">
-                                <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png">
-                                <h5><b>And Then There Were None</b></h5>
-                                        <h6>Agatha Christe</h6>
-                                        <h5>$12.00</h5>
-                            </a>
-                        </div>
-                    </div>  
-                    <div class="col-md-3">
-                        <div class="book-gallery">
-                            <a href="#">
-                                <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png">
-                                <h5><b>And Then There Were None</b></h5>
-                                        <h6>Agatha Christe</h6>
-                                        <h5>$12.00</h5>
-                            </a>
-                        </div>
-                    </div>  
-                    <div class="col-md-3">
-                        <div class="book-gallery">
-                            <a href="#">
-                                <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png">
-                                <h5><b>And Then There Were None</b></h5>
-                                        <h6>Agatha Christe</h6>
-                                        <h5>$12.00</h5>
-                            </a>
-                        </div>
-                    </div>  
-                    
-                    <div class="col-md-3">
-                        <div class="book-gallery">
-                            <a href="#">
-                                <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png">
-                                <h5><b>And Then There Were None</b></h5>
-                                        <h6>Agatha Christe</h6>
-                                        <h5>$12.00</h5>
-                            </a>
-                        </div>
-                    </div>  
-                    
-                    <div class="col-md-3">
-                        <div class="book-gallery">
-                            <a href="#">
-                                <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png" >
-                                <h5><b>And Then There Were None</b></h5>
-                                        <h6>Agatha Christe</h6>
-                                        <h5>$12.00</h5>
-                            </a>
-                        </div>
-                    </div>  
 
-                     <div class="col-md-3">
-                        <div class="book-gallery">
-                            <a href="#">
-                                <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png" >
-                                <h5><b>And Then There Were None</b></h5>
+            <div class="col-md-8 col-list">
+                <div class="panel-info">
+                    <div class="panel-heading">
+                        <h4><b>BOOKS</b></h4>
+                    </div>
+                    <div class="panel-body text-center">
+                        <div class="row row-books">
+                            <div class="col-md-3" style="left: 0px;">
+                                <div class="book-gallery">
+                                    <a href="#">
+                                        <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png">
+                                        <h5><b>And Then There Were None</b></h5>
                                         <h6>Agatha Christe</h6>
-                                        <h5>$12.00</h5>
-                            </a>
-                        </div>
-                    </div>  
-                     
-                     <div class="col-md-3">
-                        <div class="book-gallery">
-                            <a href="#">
-                                <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png" >
-                                <h5><b>And Then There Were None</b></h5>
+                                        <h5 class="price">$12.00</h5>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="book-gallery">
+                                    <a href="#">
+                                        <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png">
+                                        <h5><b>And Then There Were None</b></h5>
                                         <h6>Agatha Christe</h6>
-                                        <h5>$12.00</h5>
-                            </a>
-                        </div>
-                    </div> 
+                                        <h5 class="price">$12.00</h5>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="book-gallery">
+                                    <a href="#">
+                                        <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png">
+                                        <h5><b>And Then There Were None</b></h5>
+                                        <h6>Agatha Christe</h6>
+                                        <h5 class="price">$12.00</h5>
+                                    </a>
+                                </div>
+                            </div>
 
-                    <div class="col-md-3">
-                        <div class="book-gallery">
-                            <a href="#">
-                                <img src="img/ak.jpg" alt="Trời Vẫn Còn Xanh Em Vẫn Còn Anh">
-                                    <h5><b>Trời Vẫn Còn Xanh Em Vẫn Còn Anh</b></h5>
-                                    <h6>Anh Khang</h6>
-                                    <h5>$12.00</h5>
-                            </a>
+                            <div class="col-md-3">
+                                <div class="book-gallery">
+                                    <a href="#">
+                                        <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png">
+                                        <h5><b>And Then There Were None</b></h5>
+                                        <h6>Agatha Christe</h6>
+                                        <h5 class="price">$12.00</h5>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="col-md-3">
+                                <div class="book-gallery">
+                                    <a href="#">
+                                        <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png">
+                                        <h5><b>And Then There Were None</b></h5>
+                                        <h6>Agatha Christe</h6>
+                                        <h5 class="price">$12.00</h5>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="book-gallery">
+                                    <a href="#">
+                                        <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png">
+                                        <h5><b>And Then There Were None</b></h5>
+                                        <h6>Agatha Christe</h6>
+                                        <h5 class="price">$12.00</h5>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="book-gallery">
+                                    <a href="#">
+                                        <img src="http://s3.amazonaws.com/agatha-christie-cms-production/hcus-paperback/And-Then-There-Were-None-HarperCollins-US.png">
+                                        <h5><b>And Then There Were None</b></h5>
+                                        <h6>Agatha Christe</h6>
+                                        <h5 class="price">$12.00</h5>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="book-gallery">
+                                    <a href="#">
+                                        <img src="img/ak.jpg" alt="Trời Vẫn Còn Xanh Em Vẫn Còn Anh">
+                                        <h5><b>Trời Vẫn Còn Xanh Em Vẫn Còn Anh</b></h5>
+                                        <h6>Anh Khang</h6>
+                                        <h5 class="price">$12.00</h5>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="book-gallery">
+                                    <a href="#">
+                                        <img src="img/ak.jpg" alt="Trời Vẫn Còn Xanh Em Vẫn Còn Anh">
+                                        <h5><b>Trời Vẫn Còn Xanh Em Vẫn Còn Anh</b></h5>
+                                        <h6>Anh Khang</h6>
+                                        <h5 class="price">$12.00</h5>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="book-gallery">
+                                    <a href="#">
+                                        <img src="img/ak.jpg" alt="Trời Vẫn Còn Xanh Em Vẫn Còn Anh">
+                                        <h5><b>Trời Vẫn Còn Xanh Em Vẫn Còn Anh</b></h5>
+                                        <h6>Anh Khang</h6>
+                                        <h5 class="price">$12.00</h5>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-pagination">
+
+                            <ul class="pagination ct-blue">
+
+                                <li><a href="#">&laquo;</a></li>
+
+                                <li><a href="#">1</a></li>
+
+                                <li><a href="#">2</a></li>
+
+                                <li class="active"><a href="#">3</a></li>
+
+                                <li><a href="#">4</a></li>
+
+                                <li><a href="#">5</a></li>
+
+                                <li><a href="#">&raquo;</a></li>
+
+                            </ul>
                         </div>
                     </div>
-
-                    <div class="col-md-3">
-                        <div class="book-gallery">
-                            <a href="#">
-                                <img src="img/ak.jpg" alt="Trời Vẫn Còn Xanh Em Vẫn Còn Anh">
-                                    <h5><b>Trời Vẫn Còn Xanh Em Vẫn Còn Anh</b></h5>
-                                    <h6>Anh Khang</h6>
-                                    <h5>$12.00</h5>
-                            </a>
-                        </div> 
-                    </div> 
-                   <div class="col-md-3"> 
-                        <div class="book-gallery">
-                            <a href="#">
-                                <img src="img/ak.jpg" alt="Trời Vẫn Còn Xanh Em Vẫn Còn Anh">
-                                    <h5><b>Trời Vẫn Còn Xanh Em Vẫn Còn Anh</b></h5>
-                                    <h6>Anh Khang</h6>
-                                    <h5>$12.00</h5>
-                            </a>
-                        </div> 
-                    </div>                 
                 </div>
             </div>
         </div>
     </div>
-    <!--Section Admin-->  
+    <!--Section Admin-->
     <div class="container">
         <div class="row row-admin">
             <div class="col-md-2 col-md-ad2 text-center">
                 <div class="thumbnail thumbnail-admin">
-                        <h4>Admin</h4>
-                        <img src="img/user.png" class="img-responsive" alt="img-ad" style="width:80%">
+                    <h4>Admin</h4>
+                    <img src="img/user.png" class="img-responsive" alt="img-ad" style="width:80%">
                 </div>
             </div>
 
+
             <div class="col-md-7 col-md-ad7">
+                <div class="panel-info">
+                    <div class="panel-heading">
+                        <h3><b>INFORMATION</b></h3>
+                    </div>
 
-                <h3><b>INFORMATION<b/></h3>
+                    <div class="panel-body">
+                        <label>Titles</label><br/>
+                        <input type="text" class="form-control"><br/>
+                        <label>Author</label><br/>
+                        <input type="text" class="form-control"><br/>
+                        <label>Price</label><br/>
+                        <input type="number" class="form-control"><br/>
+                        <label>Form</label><br/>
 
-                <label>Titles</label><br/>
-                    <input type="text" class="bookName"><br/>
-                <label>Author</label><br/>
-                    <input type="text" class="Author"><br/>
-                <label>Price</label><br/>
-                     <input type="number"><br/>
-                <label>Form</label><br/>
-                    <input type="radio" name="form" value="Bìa cứng"> Bìa cứng
-                    <input type="radio" name="form" value="Bìa mềm">  Bìa mềm
+                        <label class="radio ct-green">
+
+                        <input type="radio" name="form" data-toggle="radio" id="optionsRadios3" value="Bìa cứng" checked>
+
+                        <i></i>Bìa cứng
+
+                        </label>
+
+                        <label class="radio ct-orange">
+
+                        <input type="radio" name="form" data-toggle="radio" id="optionsRadios4" value="Bìa mềm" checked>
+
+                        <i></i>Bìa mềm
+
+                        </label>
+                    </div>
+                </div>
+
             </div>
-
         </div>
     </div>
     <!--Section Footer-->
@@ -635,7 +701,7 @@
         <div class="flex-container">
 
             <div class="item-logo">
-                <img class="img img-circle" src="img/logo.jpeg" id="logo" >
+                <img class="img img-circle" src="img/logo.jpeg" id="logo">
             </div>
 
             <div class="item-info">
@@ -643,7 +709,7 @@
                 <p>Made by Kaze with <span class="glyphicon glyphicon-heart"></span></p>
             </div>
 
-           
+
 
             <div class="item-social">
                 <a href="" style="margin: 0 7px;"><i class="fa fa-facebook-official" style="font-size:24px"></i></a>
@@ -651,17 +717,18 @@
                 <a href="" style="margin: 0 7px;"><i class="fa fa-instagram" style="font-size:24px"></i></a>
                 <a href="" style="margin: 0 7px;"><i class="fa fa-dribbble" style="font-size:24px"></i></a>
             </div>
-                
+
         </div>
     </footer>
 
     <script src="GSD/jquery/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="GSD/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
-	<script src="GSD/bootstrap3/js/bootstrap.js" type="text/javascript"></script>
-	<script src="GSD/assets/js/gsdk-checkbox.js"></script>
-	<script src="GSD/assets/js/gsdk-radio.js"></script>
-	<script src="GSD/assets/js/gsdk-bootstrapswitch.js"></script>
-	<script src="GSD/assets/js/get-shit-done.js"></script>
+    <script src="GSD/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+    <script src="GSD/bootstrap3/js/bootstrap.js" type="text/javascript"></script>
+    <script src="GSD/assets/js/gsdk-checkbox.js"></script>
+    <script src="GSD/assets/js/gsdk-radio.js"></script>
+    <script src="GSD/assets/js/gsdk-bootstrapswitch.js"></script>
+    <script src="GSD/assets/js/get-shit-done.js"></script>
     <script src="GSD/assets/js/custom.js"></script>
 </body>
+
 </html>

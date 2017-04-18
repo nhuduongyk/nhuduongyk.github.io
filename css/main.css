@@ -59,6 +59,12 @@
     margin-bottom: 0px;
 }
 
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+    color: #f75353 !important;
+}
+
+.container-title,
 .form-control,
 ol,
 ol li,
@@ -78,9 +84,9 @@ ol li a,
 .col-md-3 .thumbnail a,
 .col-md-3 .thumbnail a .caption,
 .col-md-3 .thumbnail a .caption h5 b,
+.container-details,
 .row-details,
 .row-title,
-.container-title,
 .col-title,
 .col-img,
 .col-title>h3,
@@ -88,11 +94,35 @@ ol li a,
 .col-title>h2,
 .row-details,
 .nav-pills,
-.tab-contents,
-.tab-contents #description,
-.tab-contents #description p,
-.tab-contents #additional,
-.tab-contents #additional table {
+.thumbnail,
+.thumbnail h4,
+.well-comt,
+.well-comt p,
+.img-responsive,
+.row-details>.tab-content,
+.row-details>.tab-content #description,
+.row-details>.tab-content #description p,
+.row-details>.tab-content #additional,
+.row-details>.tab-content #additional .table,
+.row-details>.tab-content #additional .table tbody,
+.row-details>.tab-content #additional .table tbody tr,
+.row-details>.tab-content #additional .table tbody tr td,
+.panel-body .label,
+.ads,
+.ads img,
+.row-books,
+.row-books .col-md-3,
+.book-gallery a h6,
+.row-books .col-md-3 .book-gallery,
+.row-pagination,
+.pagination,
+.pagination li,
+.col-md-ad7,
+.col-md-ad7 label,
+.col-md-ad7 h3,
+.col-md-ad7 h3 b,
+.radio,
+.radio span {
     background-color: #fff !important;
 }
 
@@ -109,11 +139,15 @@ ol li a,
     padding-bottom: 15px;
 }
 
+.row-pro {
+    margin-top: 20px;
+}
+
 .nav-tabs.nav-justified>.active>a,
 .nav-tabs.nav-justified>.active>a:focus,
 .nav-tabs.nav-justified>.active>a:hover {
     border-top: 2px solid #f75353 !important;
-    color: #f75353;
+    color: #f75353 !important;
     font-size: 16px;
     border-right-color: #fff !important;
     border-left-color: #fff !important;
@@ -172,9 +206,18 @@ ul li a,
     font-size: 16px !important;
 }
 
-.navbar .btn:hover,
-.navbar .btn:focus {
+.btn-cart:hover,
+.btn-cart:focus {
     color: white !important;
+}
+
+.btn-cart.btn-md:hover,
+.btn-cart.btn-md:focus {
+    background-color: #242D3C !important;
+}
+
+.btn-cart.btn-md {
+    background-color: #555 !important;
 }
 
 .navbar-search-form {
@@ -209,19 +252,14 @@ ul li a,
 
 /* button*/
 
-.btn-warning {
-    background-image: -webkit-linear-gradient(#f0ad4e 50%, #f0ad4e 100%) !important;
-    background-image: -o-linear-gradient(#f0ad4e 50%, #f0ad4e 100%) !important;
-    background-image: linear-gradient(#f0ad4e 50%, #f0ad4e 100%) !important;
+.btn-buy {
     border-radius: 0px !important;
-    background-color: #f0ad4e;
-    border-color: #f75353 !important;
+    background-color: #f75353 !important;
+    border-color: #fff !important;
+    color: #fff !important;
 }
 
 .btn-cart {
-    background-image: -webkit-linear-gradient(#242D3C 50%, #242D3C 100%) !important;
-    background-image: -o-linear-gradient(#242D3C 50%, #242D3C 100%) !important;
-    background-image: linear-gradient(#242D3C 50%, #242D3C 100%) !important;
     border-radius: 0px !important;
     background-color: #242D3C !important;
     border-color: #f75353 !important;
@@ -229,10 +267,6 @@ ul li a,
 
 
 /* Section Category */
-
-.sidebar {
-    top: -1px;
-}
 
 .jumbotron {
     background-color: #fff !important;
@@ -247,6 +281,7 @@ ol {
 
 ol>li>a {
     color: #000;
+    font-family: MYRIADPRO;
 }
 
 ol>li>a:hover,
@@ -257,23 +292,52 @@ ol>li>a:focus {
 
 .panel-info {
     border-color: transparent !important;
+    margin-bottom: 0px !important;
+}
+
+.thumbnail-comt>h4 {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.thumbnail-comt,
+.well-comt {
+    border-radius: 5px !important;
+}
+
+.well-comt p {
+    margin-bottom: 0px !important;
+    font-size: 15px;
 }
 
 .panel-info>.panel-heading {
     background-image: -webkit-linear-gradient(top, #242D3C 0, #242D3C 100%) !important;
     background-image: -o-linear-gradient(top, #242D3C 0, #242D3C 100%) !important;
     background-image: linear-gradient(to bottom, #242D3C 0, #242D3C 100%) !important;
-    color: #f75353!important;
-    border-bottom-color: 1px solid white;
+    color: #f75353 !important;
+    border-bottom-color: 5px solid #f5f5f5 !important;
+    font-family: Lato;
 }
 
 .panel-body {
     background-color: #fff !important;
+    margin-top: 2px;
 }
 
-.panel-heading>h5,
-.panel-heading>h5>b {
+.panel-heading>h4 {
+    margin-bottom: 7.5px !important;
+    margin-top: 7.5px;
+}
+
+.panel-heading>h4,
+.panel-heading>h4>b,
+.panel-heading>h3>b,
+.panel-heading>h3 {
     background-color: transparent !important;
+}
+
+.category .panel-info {
+    margin-top: 10px;
 }
 
 .container {
@@ -312,13 +376,34 @@ ol>li>a:focus {
     margin: 20px 0px;
 }
 
+#description p,
+#additional .table tbody tr td,
+form label,
+form textarea,
+.well-comt p,
+.btn,
+.input {
+    font-family: MYRIADPRO;
+}
+
 .products {
-    margin: 30px 0px 0px 20px;
+    margin: 0px 0px 0px 20px;
+}
+
+label {
+    font-size: 16px !important;
+    color: #fff;
+}
+
+li {
+    font-size: 16px !important;
 }
 
 textarea {
     border-color: #ccc;
     padding: 10px 17px;
+    font-size: 16px !important;
+    color: #fff !important;
 }
 
 textarea:focus,
@@ -348,7 +433,8 @@ ul.nav-tabs {
 
 h5,
 h6,
-h4 {
+h4,
+h3 {
     font-family: Lato !important;
 }
 
@@ -361,8 +447,8 @@ h4 {
 }
 
 .row-best .col-md-3 .thumbnail {
-    width: 154, 778;
-    height: 377, 414;
+    width: 154.778px;
+    height: 377.414px;
 }
 
 
@@ -421,25 +507,6 @@ footer>hr {
     flex-grow: 2;
 }
 
-.item-contact>a:hover,
-.item-contact>a:focus {
-    color: #c44b2f;
-}
-
-.item-contact>.btn-lg {
-    padding: 15px;
-    background-color: #242D3C;
-    border: 1px solid #b94e48;
-    color: #999;
-    margin-top: -15px;
-}
-
-.item-contact>.btn:hover,
-.item-contact>.btn:focus {
-    background-color: #b94e48;
-    color: white;
-}
-
 .item-social {
     padding: 0 20px;
     margin-top: -15px;
@@ -451,7 +518,7 @@ footer>hr {
 
 .item-social>a:hover,
 .item-social>a:focus {
-    color: #c44b2f;
+    color: #f75353;
 }
 
 nav>div>a>img>#logo {
@@ -479,16 +546,101 @@ nav>div>a>img>#logo {
     border-radius: 4px !important;
 }
 
-.col-md-ad2 {
-    left: 30px;
-}
-
 .row-admin {
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
 .col-md-ad7 {
-    left: 50px;
-    top: -20px;
+    left: 15px;
+}
+
+
+/* Nae-il*/
+
+.nav-pills>li.active,
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:hover,
+.nav-pills>li.active>a:focus {
+    background-color: #242D3C !important;
+    color: #f75353 !important;
+}
+
+.nav-pills>li>a {
+    border: 1px solid #fff !important;
+    color: #888 !important;
+}
+
+.nav-tabs.nav-justified>li>a {
+    color: #888 !important;
+}
+
+.products {
+    background-color: #242D3C !important;
+    color: #f75353 !important;
+}
+
+.col-break {
+    background-color: #555 !important;
+    height: 577.344px !important;
+    width: 20px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.thumbnail-details {
+    margin-left: -5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 10px;
+}
+
+.container-details {
+    margin-top: 20px;
+}
+
+.row-details {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.container-title {
+    margin-top: 20px;
+}
+
+.book-gallery a {
+    color: #242D3C;
+}
+
+.price {
+    color: #f75353 !important;
+}
+
+.col-list .panel-info {
+    margin-top: 10px;
+}
+
+.row-books {
+    margin-top: 15px;
+    margin-right: 5px !important;
+    margin-left: 5px !important;
+}
+
+.thumbnail-admin h4 {
+    margin-top: 7.5px;
+    margin-bottom: 7.5px;
+}
+
+footer {
+    margin-top: 50px;
+}
+
+label {
+    font-family: MYRIADPRO;
+    color: #242D3C
+}
+
+.col-md-ad7 .panel-info {
+    margin-left: -20px;
+    margin-right: -20px;
 }
