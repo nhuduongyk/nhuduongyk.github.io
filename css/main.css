@@ -41,7 +41,13 @@
 .navbar-right>li,
 .navbar-nav,
 .navbar-header,
-#myNavbar {
+#myNavbar,
+.panel-title .row,
+.panel-title .row .col-md-6,
+.panel-title .row .col-md-6 button,
+.panel-title .row .col-md-6 button span,
+.panel-title .row .col-md-6 h5,
+.panel-title .row .col-md-6 h5 span {
     background-color: #242D3C !important;
 }
 
@@ -78,18 +84,18 @@ ol li a,
 .row-best .col-best .tab-content #hotb,
 .row-best .col-best .tab-content #bests,
 .row-best .col-best .tab-content #staff,
-.col-md-3 .thumbnail,
-.col-md-3 .thumbnail a .caption h6,
-.col-md-3 .thumbnail a .caption h5,
-.col-md-3 .thumbnail a,
-.col-md-3 .thumbnail a .caption,
-.col-md-3 .thumbnail a .caption h5 b,
+.col-md-2 .thumbnail,
+.col-md-2 .thumbnail a .caption h6,
+.col-md-2 .thumbnail a .caption h5,
+.col-md-2 .thumbnail a,
+.col-md-2 .thumbnail a .caption h5 b,
 .container-details,
 .row-details,
 .row-title,
 .col-title,
 .col-img,
 .col-title>h3,
+.col-title>h3>b,
 .col-title>h5,
 .col-title>h2,
 .row-details,
@@ -122,7 +128,37 @@ ol li a,
 .col-md-ad7 h3,
 .col-md-ad7 h3 b,
 .radio,
-.radio span {
+.radio span,
+.panel-body .row,
+.panel-body .row .col-md-2,
+.panel-body .row .col-md-2 img,
+.panel-body .row .col-md-4,
+.panel-body .row .col-md-4 h5,
+.panel-body .row .col-md-4 h5 strong,
+.panel-body .row .col-md-4 h4 small,
+.panel-body .row .col-md-4 h4,
+.panel-body .row .col-md-6,
+.panel-body .row .col-md-6 .col-md-6,
+.panel-body .row .col-md-6 .col-md-6 h5,
+.panel-body .row .col-md-6 .col-md-6 h5 strong,
+.text-muted,
+.panel-body .row .col-md-6 .col-xs-4,
+.input-sm,
+.btn-link,
+.panel-body .row .col-md-6 .col-md-4,
+.glyphicon-trash,
+.update-cart,
+.update-cart .col-md-9,
+.update-cart .col-md-9 h6,
+.update-cart .col-md-3,
+.update-cart .col-md-3 button,
+.panel-footer,
+.panel-footer .row,
+.panel-footer .row .col-xs-9,
+.panel-footer .row .col-md-9 h5,
+.panel-footer .row .col-md-9 h5 strong,
+.panel-footer .row .col-md-3,
+.panel-footer .row .col-md-3 button {
     background-color: #fff !important;
 }
 
@@ -131,7 +167,7 @@ ol li a,
 .nav-tabs>.active a strong,
 .nav-tabs>.active:hover,
 .tab-content,
-.tab-content .col-md-3 {
+.tab-content .col-md-2 {
     background-color: #242D3C !important;
 }
 
@@ -202,6 +238,11 @@ ul li a,
     font-size: 18px !important;
 }
 
+.dropdown-cart li {
+    font-family: MYRIADPRO !important;
+    text-shadow: 0px 0px white !important;
+}
+
 .navbar .btn {
     font-size: 16px !important;
 }
@@ -212,7 +253,13 @@ ul li a,
 }
 
 .btn-cart.btn-md:hover,
-.btn-cart.btn-md:focus {
+.btn-cart.btn-md:focus,
+.caret,
+.dropdown-cart,
+.dropdown-cart li,
+.dropdown-cart li span,
+.dropdown-cart li .text-center,
+.pull-right {
     background-color: #242D3C !important;
 }
 
@@ -259,7 +306,8 @@ ul li a,
     color: #fff !important;
 }
 
-.btn-cart {
+.btn-cart,
+.btn-sign {
     border-radius: 0px !important;
     background-color: #242D3C !important;
     border-color: #f75353 !important;
@@ -332,7 +380,8 @@ ol>li>a:focus {
 .panel-heading>h4,
 .panel-heading>h4>b,
 .panel-heading>h3>b,
-.panel-heading>h3 {
+.panel-heading>h3,
+.col-md-2 .thumbnail a .caption {
     background-color: transparent !important;
 }
 
@@ -442,13 +491,13 @@ h3 {
     margin-top: 0px;
 }
 
-.row-best .col-md-3 {
+.row-best .col-md-2 {
     margin-bottom: 20px;
 }
 
-.row-best .col-md-3 .thumbnail {
-    width: 154.778px;
-    height: 377.414px;
+.row-best .col-md-2 .thumbnail {
+    width: 160.778px;
+    height: 386.414px;
 }
 
 
@@ -643,4 +692,166 @@ label {
 .col-md-ad7 .panel-info {
     margin-left: -20px;
     margin-right: -20px;
+}
+
+
+/* Section Cart Drop Down */
+
+ul.dropdown-cart {
+    min-width: 250px;
+}
+
+ul.dropdown-cart li .item {
+    display: block;
+    padding: 3px 10px;
+    margin: 3px 0;
+}
+
+ul.dropdown-cart li .item:hover {
+    background-color: #f3f3f3;
+}
+
+ul.dropdown-cart li .item:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+ul.dropdown-cart li .item-left {
+    float: left;
+}
+
+ul.dropdown-cart li .item-left img,
+ul.dropdown-cart li .item-left span.item-info {
+    float: left;
+}
+
+ul.dropdown-cart li .item-left span.item-info {
+    margin-left: 10px;
+}
+
+ul.dropdown-cart li .item-left span.item-info span {
+    display: block;
+}
+
+ul.dropdown-cart li .item-right {
+    float: right;
+}
+
+ul.dropdown-cart li .item-right button {
+    margin-top: 14px;
+}
+
+.panel-title .row .col-md-6 button,
+.panel-title .row .col-xs-6 button {
+    margin-top: 10px;
+}
+
+.cart {
+    margin-bottom: 20px;
+}
+
+.product-name,
+.col-md-4 h4 {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
+
+
+/* Section Sign In/ Up */
+
+.form-horizontal {
+    padding: 20px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 15px 0 rgba(0, 0, 0, 0.12) !important;
+}
+
+h4 {
+    text-align: center;
+}
+
+p {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.blue {
+    color: #337ab7;
+}
+
+.social>a {
+    color: #999;
+}
+
+.social>a:hover,
+.social>a:focus {
+    color: #f75353;
+}
+
+.fa-facebook-f {
+    padding: 10px 12px 10px 12px;
+}
+
+.fa-google-plus {
+    padding: 10px 8px 10px 8px;
+}
+
+.fa-twitter {
+    padding: 10px 8px 10px 8px;
+}
+
+i {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.flip {
+    -webkit-perspective: 800;
+    perspective: 800;
+    position: relative;
+}
+
+.flip .card.flipped {
+    -webkit-transform: rotatey(-180deg);
+    transform: rotatey(-180deg);
+}
+
+.flip .card {
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: 0.5s;
+    transform-style: preserve-3d;
+    transition: 0.5s;
+}
+
+.flip .card .face {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    z-index: 2;
+}
+
+.flip .card .front {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+.flip .card .back {
+    -webkit-transform: rotatey(-180deg);
+    transform: rotatey(-180deg);
+}
+
+.inner {
+    margin: 0px !important;
+}
+
+@media (min-width: 992px) {
+    #hotb .col-md-2,
+    #bests .col-md-2,
+    #staff .col-md-2 {
+        width: 20% !important;
+    }
 }
