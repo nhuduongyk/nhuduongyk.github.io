@@ -1,0 +1,106 @@
+<div class="container contain-ad" ng-init="getBooks()">
+    <div class="row row-admin">
+        <div class="col-md-3 col-md-ad2 text-center">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4><b><i class="fa fa-home"></i>ADMIN</b></h4>
+                </div>
+                <div class="panel-body">
+                    <div class="thumbnail thumbnail-admin">
+                        <img src="img/user.png" class="img-responsive" alt="img-ad" style="width:80%">
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4><b>QUẢN LÝ</b></h4>
+                </div>
+                <div class="panel-body">
+                    <ol>
+                        <li><a>Home</a></li>
+                        <li><a>List</a></li>
+                        <li><a href="#/admin/addbook">Add Book</a></li>
+                        <li><a>Search</a></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4><b>User</b></h4>
+                </div>
+                <div class="panel-body">
+                    <ol>
+                        <li><a>List</a></li>
+                        <li><a>Manage</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-9 col-md-ad7">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4><b>TẤT CẢ SÁCH</b></h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row row-flex">
+                        <div class="col-md-12 col-sm-12">
+                            <input type="text" name="" value="" ng-model="query" class="form-control" placeholder="Search...">
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 col-lists" ng-repeat="book in books| filter: query">
+                            <div class="item item-flex">
+                                <a href="#/books/details/{{book._id}}">
+                                    <div class="img-flex">
+                                        <img ng-src="{{book.images.main}}" class="img-list" alt="">
+                                    </div>
+                                </a>
+
+                                <div class="info-flex">
+                                    <a href="#/books/details/{{book._id}}">
+                                        <h5 class="title-flex"><b>{{book.title}}</b></h5>
+                                        <h6 class="author-flex">{{book.author}}</h6>
+                                        <hr class="line-flex" style="margin-bottom: 5px;" />
+                                        <p ng-model="book.shortDescription" ta-bind="text" class="descript"></p>
+                                        <hr class="line-flex" />
+                                        <h5 class="price-flex">{{book.sellingPrice|currency:"$":0}}</h5>
+                                    </a>
+                                    <hr class="line-flex" />
+                                    <button class="btn btn-like btn-trash" data-toggle="modal" data-target="#{{book._id}}"><i class="fa fa-trash-o"></i></button>
+                                    <a href="#/admin/editbook/{{book._id}}" class="btn btn-buy btn-edit" type="button"><i class="fa fa-pencil-square-o"></i></a>
+
+
+                                    <!---Modal/Close-->
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="{{book._id}}" ng-repeat="book in books| filter: query" role="dialog">
+                                        <div class="modal-dialog">
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header modal-head">
+                                                    <button type="button" class="close modal-close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Bạn muốn xóa "{{book.title}}"?</h4>
+                                                </div>
+                                                <div class="modal-body modal-center">
+                                                    <p>Sách sẽ bị xóa và bạn sẽ không thể tìm thấy ở đâu nữa. Bạn chắc chắn muốn xóa chứ?</p>
+                                                </div>
+                                                <hr/>
+                                                <div class="modal-footer modal-last">
+                                                    <button type="button" class="btn btn-buy btn-modal" data-dismiss="modal" ng-click="removeBook(book._id)">Xóa</button>
+                                                    <button type="button" class="btn btn-buy btn-modal" data-dismiss="modal">Hủy</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

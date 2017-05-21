@@ -1,0 +1,170 @@
+<div class="container contain-ad">
+    <div class="row row-admin">
+        <div class="col-md-3 col-sm-4 col-md-ad2 text-center">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4><b><i class="fa fa-home"></i>ADMIN</b></h4>
+                </div>
+                <div class="panel-body">
+                    <div class="thumbnail thumbnail-admin">
+                        <img src="img/user.png" class="img-responsive" alt="img-ad" style="width:80%">
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4><b>Quản Lý</b></h4>
+                </div>
+                <div class="panel-body">
+                    <ol>
+                        <li><a>Home</a></li>
+                        <li><a>Kho Sách</a></li>
+                        <li><a href="#/admin/addbook">Thêm Sách</a></li>
+                        <li><a>Search</a></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="panel panel-info ">
+                <div class="panel-heading ">
+                    <h4><b>User</b></h4>
+                </div>
+                <div class="panel-body ">
+                    <ol>
+                        <li><a>List</a></li>
+                        <li><a>Manage</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 col-sm-8 ">
+            <div class="panel panel-info ">
+                <div class="panel-heading ">
+                    <h4><b>THÊM SÁCH</b></h4>
+                </div>
+                <div class="panel-body ">
+                    <form name="postForm " ng-submit="updateBook()" ng-init="getBook()">
+                        <div class="col-md-12 col-sm-12 form-group " ng-class="(postForm.title.$invalid && !postForm.title.$pristine)? 'has-error has-feedback': 'has-success' ">
+                            <label class="control-label">Tên Sách:<span ng-show="postForm.title.$invalid && !postForm.title.$pristine " class="text-danger"> Hãy cho tôi biết tên sách.</span></label>
+                            <input class="form-control " type="text " ng-model="book.title" ng-required="true " name="title " />
+                            <span ng-show="postForm.title.$invalid && !postForm.title.$pristine " class="glyphicon glyphicon-remove form-control-feedback check-position"></span>
+                            <i ng-show="!postForm.title.$invalid" class="fa fa-check fa-check-set has-success form-control-feedback check-position"></i>
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 form-group">
+                            <label>Thể Loại</label>
+                            <select ng-model="book.genre" name="genre" ng-required="true" class="form-control " ng-options="genre as genre.name for genre in genres ">
+                            <p ng-show="postForm.genre.$invalid " class="text-danger "> Hãy chọn thể loại.</p>  
+                        </select>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 form-group" ng-class="(postForm.author.$invalid && !postForm.author.$pristine)? 'has-error has-feedback': 'has-success' ">
+                            <label class="control-label">Tác Giả:<span ng-show="postForm.author.$invalid && !postForm.author.$pristine " class="text-danger"> Hãy nhập tên tác giả</span></label>
+                            <input class="form-control " type="text " ng-model="book.author " ng-required="true" name="author" />
+                            <span ng-show="postForm.author.$invalid && !postForm.author.$pristine " class="glyphicon glyphicon-remove form-control-feedback check-position"></span>
+                            <i ng-show="!postForm.author.$invalid" class="fa fa-check fa-check-set has-success form-control-feedback check-position"></i>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6 form-group" ng-class="(postForm.title.$invalid && !postForm.title.$pristine)? 'has-error has-feedback': 'has-success' ">
+                            <label class="control-label">Nhà Xuất Bản: <span ng-show="postForm.publisher.$invalid && !postForm.publisher.$pristine " class="text-danger "> Hãy nhập tên nhà xuất bản sách</span></label>
+                            <input class="form-control" ng-required="true " type="text" ng-model="book.publisher " name="publisher " />
+                            <span ng-show="postForm.publisher.$invalid && !postForm.publisher.$pristine " class="glyphicon glyphicon-remove form-control-feedback check-position"></span>
+                            <i ng-show="!postForm.publisher.$invalid" class="fa fa-check fa-check-set has-success form-control-feedback check-position"></i>
+                        </div>
+                        <div class="col-sm-3 col-md-3 form-group">
+                            <label class="control-label">Số Trang</label>
+                            <input class="form-control" type="number" ng-model="book.pages" name="pages" />
+                            <p ng-show="postForm.pages.$error.number" class="text-danger"> Hãy cho tôi biết số trang</p>
+                        </div>
+                        <div class="col-sm-3 col-md-3 form-group">
+                            <label class="control-label ">Khối lượng:</label>
+                            <input class="form-control" type="number" ng-model="book.weight" name="weight" />
+                            <p ng-show="postForm.weight.$error.number" class="text-danger"> Hãy cho tôi biết trọng lượng.</p>
+                        </div>
+                        <div class="col-sm-3 col-md-3 form-group">
+                            <label class="control-label">Chiều Rộng:</label>
+                            <input class="form-control" type="number" ng-model="book.size.width" name="width" />
+                            <p ng-show="postForm.width.$error.number" class="text-danger"> Hãy cho tôi biết chiều rộng sách.</p>
+                        </div>
+
+                        <div class="col-sm-3 col-md-3 form-group">
+                            <label class="control-label">Độ Dày:</label>
+                            <input class="form-control" type="number" ng-model="book.size.depth" name="depth" />
+                            <p ng-show="postForm.depth.$error.number" class="text-danger"> Hãy cho tôi biết độ dày sách.</p>
+                        </div>
+
+                        <div class="col-sm-12 form-group">
+                            <label class="control-label ">Sơ Lược Sách</label>
+                            <div text-angular="text-angular" class="textAngular" name="shortDescription" ng-model="book.shortDescription " ta-disabled='disabled' class="inputDescription "></div>
+                        </div>
+
+                        <div class="col-sm-12 form-group ">
+                            <label class="control-label ">Giới Thiệu Sách</label>
+                            <div text-angular="text-angular" class="textAngular" name="fullDescription " ng-model="book.fullDescription " ta-disabled='disabled' class="inputDescription "></div>
+                        </div>
+
+                        <div class="col-sm-2 form-group">
+                            <label class="control-label ">Sku:</label>
+                            <input class="form-control " type="text " ng-model="book.sku " name="sku " />
+                        </div>
+
+                        <div class="col-sm-10 form-group" ng-class="(postForm.imgBook.$invalid && !postForm.imgBook.$pristine)? 'has-error has-feedback': 'has-success' ">
+                            <label class="control-label">Ảnh Sách</label>
+                            <input type="url" class="form-control" ng-required="true" name="imgBook" ng-model="book.images.main">
+                            <span ng-show="postForm.imgBook.$invalid && !postForm.imgBook.$pristine" class="glyphicon glyphicon-remove form-control-feedback check-position"></span>
+                            <i ng-show="!postForm.imgBook.$invalid" class="fa fa-check fa-check-set has-success form-control-feedback check-position"></i>
+                        </div>
+
+                        <div class=" col-sm-6 form-group" ng-class="(postForm.previousPrice.$invalid && !postForm.previousPrice.$pristine)? 'has-error has-feedback': 'has-success' ">
+                            <label class="control-label">Giá Bìa:</label>
+                            <input class="form-control" ng-required="true" type="number" min="0" ng-model="book.previousPrice" name="previousPrice" />
+                            <span ng-show="postForm.previousPrice.$invalid && !postForm.previousPrice.$pristine" class="glyphicon glyphicon-remove form-control-feedback check-position"></span>
+                            <i ng-show="book.previousPrice>=0" class="fa fa-check fa-check-set has-success form-control-feedback check-position"></i>
+                            <p ng-show="postForm.previousPrice.$error.number" class="text-danger "> Hãy nhập giá bìa.</p>
+                        </div>
+
+                        <div class="col-sm-6 form-group" ng-class="(postForm.sellingPrice.$invalid && !postForm.sellingPrice.$pristine)? 'has-error has-feedback': 'has-success' ">
+                            <label class="control-label">Giá Khuyến Mãi:</label>
+                            <input class="form-control" type="number" ng-required="true" min="0" ng-model="book.sellingPrice" name="sellingPrice" />
+                            <span ng-show="postForm.sellingPrice.$invalid && !postForm.sellingPrice.$pristine " class="glyphicon glyphicon-remove form-control-feedback check-position"></span>
+                            <i ng-show="book.sellingPrice>=0" class="fa fa-check fa-check-set has-success form-control-feedback check-position"></i>
+                            <p ng-show="postForm.sellingPrice.$error.number" class="text-danger"> Hãy nhập giá khuyến mãi.</p>
+
+                        </div>
+
+                        <div class="col-sm-6 form-group">
+                            <label class="control-label ">Ngày Xuất Bản:</label>
+                            <p class="input-group date ">
+                                <input type="text " class="form-control" popup-placement="top" uib-datepicker-popup="MM/dd/yyyy" ng-model="ReleaseDate" is-open="popup2.opened" datepicker-options="" close-text="Close" />
+                                <span class="input-group-btn span-date ">
+                                        <button type="button " class="btn btn-default btn-md btn-date" ng-click="open2() "><i class="glyphicon glyphicon-calendar "></i></button>
+                                     </span>
+                            </p>
+                        </div>
+
+                        <div class=" col-sm-6 form-group ">
+                            <label class="control-label ">Ngày Đăng Sách:</label>
+                            <p class="input-group date ">
+                                <input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="CreateDate" is-open="popup1.opened " datepicker-options=" " close-text="Close " />
+                                <span class="input-group-btn span-date">
+                                <button type="button" class="btn btn-default btn-md btn-date" ng-click="open1() "><i class="glyphicon glyphicon-calendar "></i></button>
+                            </span>
+                            </p>
+                        </div>
+
+                        <div class="col-sm-12 form-group ">
+                            <span ng-class="postForm.$invalid? 'disable': '' "><input type="submit" value="Submit " ng-disabled="postForm.$invalid " class="btn btn-danger " /> </span>
+                        </div>
+
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

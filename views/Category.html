@@ -1,0 +1,48 @@
+<div class="container container-books" ng-init="getBooks()">
+    <div class="row row-list">
+        <div class="col-md-3 text-center sidebar">
+            <div class="panel panel-info" ng-show="genres.length>0">
+                <div class="panel-heading">
+                    <h4><b>DANH MỤC</b></h4>
+                </div>
+                <div class="panel-body">
+                    <ol>
+                        <li ng-repeat="genre in genres"><a href="#/category/{{genre._id}}">{{genre.name}}</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-9 col-list">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4><b>KHO SÁCH</b></h4>
+                </div>
+                <div class="panel-body text-center">
+                    <div class="row row-books">
+                        <div class="col-md-3 col-gallery" ng-repeat="book in filteredBooks">
+                            <a href="#/books/details/{{book._id}}">
+                                <div class="thumbnail thumnail-gallery">
+                                    <img ng-src={{book.images.main}} class="imgList">
+                                    <h5 class="title"><b>{{book.title|limitTo:30}}<span class="dote" ng-show="book.title.length>30">...</span></b></h5>
+                                    <h6 class="author">{{book.author}}</h6>
+                                    <h5 class="price">{{book.sellingPrice}}</h5>
+                                    <hr/>
+                                    <button class="btn btn-buy"><span class="glyphicon glyphicon-shopping-cart"></span></button>
+                                    <button class="btn btn-like"><span class="glyphicon glyphicon-heart"></span></button>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="row row-pagination">
+                        <div class="col-sm-12">
+                            <ul uib-pagination total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" max-size="maxSize" class="pagination-sm pagination-danger" boundary-link-numbers="true" next-text="Trang kế" previous-text="Trang trước" ng-click="changePage()"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
-$(document).ready(function() {
-    $('.fliper-btn').click(function() {
-        $('.flip').find('.card').toggleClass('flipped');
+/*$.noConflict();
+jQuery(document).ready(function() {
+    jQuery('.fliper-btn').click(function() {
+        jQuery('.flip').find('.card').toggleClass('flipped');
     });
 });
