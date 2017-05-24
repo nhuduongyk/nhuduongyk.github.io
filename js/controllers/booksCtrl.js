@@ -14,6 +14,7 @@ app.controller('BooksController', ['$scope', '$http', '$location', '$routeParams
             $scope.filteredBooks = $scope.books.slice(begin, end);
         };
         $scope.changePage();
+
     }
 
     $scope.getBooks = function() {
@@ -37,6 +38,9 @@ app.controller('BooksController', ['$scope', '$http', '$location', '$routeParams
             } else {
                 $scope.rateAvr = rateTotal / $scope.book.comments.length;
             }
+            var pre = $scope.book.previousPrice;
+            sell = $scope.book.sellingPrice;
+            $scope.sale = Math.ceil((pre - sell) * 100 / pre);
         });
     }
 
@@ -116,33 +120,17 @@ app.controller('BooksController', ['$scope', '$http', '$location', '$routeParams
     ];
 
     /*-------Commment---------- */
-    $scope.comment = {};
     $scope.addComment = function(post) {
-        $scope.comment.date = Date.now();
-        $scope.comment.userName = $scope.user.userName;
-        $scope.comment.userAvatarUrl = $scope.user.userAvatarUrl;
-        post.comments.push($scope.comment);
-        var req = {
-            method: 'PUT',
-            url: root + '/api/books' + $routeParams.id,
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            data: post
-        }
-        $http(req).then(function() {
-                console.log('success')
-            },
-
-            function() {
-                console.log('error')
-            });
-        // $http.put(bookservice.getBook + $routeParams.itemId, $scope.post).success(function(response) {
-        //     console.log('success')
-        // });
-
+        $scope.comment.userId = $scope.user._id;
+        $scope.comment.bookId = post._id;
+        $scope.createdDate = Date.now();
+        console.log($scope.comment);
+        $http.post(root + '/api/books/comment', $scope.comment).success(function(response) {
+            window.location.href = '#/books/{{book._id}}';
+        }).error(function(data, status, headers, config) {
+            console.log(data, status, headers, config);
+        });
         console.log(post);
-
     }
 
     /*--------Date Picker--------- */

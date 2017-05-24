@@ -1,40 +1,59 @@
 <div ng-init="getBook()">
     <div class="container container-title">
-        <div class="row row-title">
+        <div class="row row-main-search">
+            <div class="col-md-12 hidden-xs">
+                <ol class="breadcrumb bread-crumb">
+                    <li class="breadcrumb-item"><a href="#/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#/category">Danh mục</a></li>
+                    <li class="breadcrumb-item active">{{book.title}}</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row row-home">
             <div class="col-md-4 col-img">
                 <div class="thumbnail thumbnail-details">
-                    <img ng-src={{book.images.main}} style="width:80%">
+                    <img ng-src={{book.images.main}} class="img-details">
                 </div>
             </div>
             <div class="col-md-1 col-offset-1 col-xs-0 col-break">
             </div>
-            <div class="col-md-7 col-title">
-                <h3>{{book.title}}</h3>
-                <h5>{{book.author}}</h5>
-                <span uib-rating ng-model="rateAvr" max="max" read-only="true" on-hover="hoveringOver(value)"></span>
-                <hr/>
-                <h3 class="pre-price ">{{book.previousPrice}}</h3>
-                <h3>{{book.sellingPrice}}</h3>
-                <hr/>
-                <button class="btn btn-buy"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG </button>
+            <div class="col-md-7 col-title try">
+                <div class="well well-title">
+                    <h3 class="b-title"><strong>{{book.title}}</strong></h3>
+                    <h5 class="b-author au">{{book.author}}</h5>
+                    <span uib-rating ng-model="rateAvr" max="max" read-only="true" on-hover="hoveringOver(value)"></span>
+                    <hr class="line" />
+                    <h5 class="pre-price">{{book.previousPrice|number:0}} <u>đ</u><span class="label label-danger sale"> Tiết kiệm: {{sale}} %</span></h5>
+                    <h4 class="sell-price">{{book.sellingPrice|number:0}} <u>đ</u></h4>
+                    <hr class="line" />
+                    <h5 class="b-author">Giới thiệu</h5>
+                    <p ng-model="book.shortDescription" class="short-descript" ta-bind="text"></p>
+                    <hr/>
+                    <div class="input-group-btn">
+                        <label>Số lượng</label><input type="number" class="form-control add-cart" min="0" />
+                        <button class="btn btn-buy"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG </button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container container-details">
-        <div class="row row-details">
-            <div class="col-md-12">
+
+
+        <div class="row row-home">
+            <div class="col-md-12 col-descript">
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h4><b>GIỚI THIỆU SÁCH</b></h4>
                     </div>
                     <div class="panel-body" id="description">
-                        <p ng-model="book.fullDescription" ta-bind="text">
+                        <p ng-model="book.fullDescription" class="full-descript" ta-bind="text">
 
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12 col-info">
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h4><b>THÔNG TIN CHI TIẾT</b></h4>
@@ -84,48 +103,38 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!--Mupti.. Plugin-->
-<div class="container">
-    <div class="row row-pro">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h4 class="products">PRODUCTS</h4>
+
+
+
+        <div class="row row-home">
+            <div class="col-md-12">
+                <form name="cmtForm" ng-submit="addComment(book)">
+                    <h5 class="h-comt"><b>Đánh Giá Của Bạn</b><span uib-rating class="rate" ng-model="comment.rate" max="max" read-only="false" on-hover="hoveringOver(value)"></span></h5>
+
+                    <h5 class="h-comt"><b>Nhận Xét Của Bạn</b></h5>
+
+                    <textarea ng-model="comment.commentBody" name="commentBody" ng-required="true" class="textarea" rows="4" placeholder="Để lại nhận xét..."></textarea>
+
+                    <button ng-disabled="!isLogged()" class="btn btn-post" type="submit">Đăng</button>
+                </form>
+            </div>
+        </div>
+        <hr/>
+        <div class="row row-home" ng-repeat="comment in book.comments">
+            <div class="col-md-2 text-center">
+                <div class="thumbnail thumbnail-comt">
+                    <h5 class="user-name">{{comment._user.name}}</h5>
+                    <img ng-src={{comment._user.avatarUrl}} class="img-responsive img-user" width="65%">
+                </div>
             </div>
 
-            <div class="panel-body">
-                <hr/>
-                <hr/>
+            <div class="col-md-10">
+                <div class="well well-comt">
+                    <p class="date">{{comment.createdDate|date:"dd/MM/yyyy"}} - <span uib-rating ng-model="comment.rate" max="max" read-only="true" on-hover="hoveringOver(value)"></span></p>
+                    <hr class="line lines" />
+                    <p class="comment-body">{{comment.commentBody}}</p>
+                </div>
             </div>
-
         </div>
     </div>
-</div>
-
-<div class="row comt">
-    <div class="col-md-2 text-center">
-        <div class="thumbnail thumbnail-comt">
-            <h4>User</h4>
-            <h6></h6>
-            <img class="img-circle img-responsive" width="65%">
-        </div>
-    </div>
-
-    <div class="col-md-9">
-        <div class="well well-comt">
-            <p>sddsfs dsdsfdsfs</p>
-        </div>
-    </div>
-    <hr/>
-    <div class="col-md-12" style="left: 20px;">
-        <form>
-            <label>Leave Your Comments</label><br/>
-
-            <textarea cols="138" rows="3" placeholder="Enter your comments"></textarea>
-
-            <button class="btn btn-cart btn-md" type="submit">Post</button>
-        </form>
-    </div>
-</div>
 </div>

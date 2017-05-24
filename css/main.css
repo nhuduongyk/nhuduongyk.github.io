@@ -1,20 +1,5 @@
     /* Section Header */
     
-    @font-face {
-        font-family: Cuprum;
-        src: url(.../fonts/Cuprum-Regular.ttf);
-    }
-    
-    @font-face {
-        font-family: Roboto;
-        src: url(.../fonts/Roboto-Regular.ttf);
-    }
-    
-    @font-face {
-        font-family: OpenSans;
-        src: url(.../fonts/Nunito-SemiBold.ttf);
-    }
-    
     body {
         background-image: -webkit-linear-gradient(#c8c8a9 50%, #c8c8a9 100%) !important;
         background-image: -o-linear-gradient(#c8c8a9 50%, #c8c8a9 100%) !important;
@@ -240,6 +225,7 @@
     /* button*/
     
     .btn-buy,
+    .btn-post,
     .btn-like {
         border-radius: 0px !important;
         background-color: #f75353 !important;
@@ -247,13 +233,26 @@
         color: #242D3C !important;
     }
     
+    .btn-post {
+        border-color: #f75353 !important;
+    }
+    
+    .add-search {
+        margin-top: 5px;
+        border: none !important;
+        border-bottom: 1px solid #ccc !important;
+        padding-left: 0px !important;
+    }
+    
+    .btn-post:hover,
+    .btn-post:focus,
     .btn-buy:hover,
     .btn-buy:focus,
     .btn-like:hover,
     .btn-like:focus {
         background-color: #242D3C !important;
         color: #f75353 !important;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 15px 0 rgba(0, 0, 0, 0.12) !important;
+        border-color: #242D3C !important;
     }
     
     .btn-cart,
@@ -295,14 +294,29 @@
         margin-bottom: 0px !important;
     }
     
-    .thumbnail-comt,
-    .well-comt {
+    .thumbnail-comt {
         border-radius: 5px !important;
+        background-color: #566271 !important;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 15px 0 rgba(0, 0, 0, 0.12) !important;
     }
     
-    .well-comt p {
+    .well-comt {
+        border-color: #efeee1;
+        border-radius: 5px !important;
+        background-color: #efeee1 !important;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 15px 0 rgba(0, 0, 0, 0.12) !important;
+    }
+    
+    .well-comt .comment-body {
         margin-bottom: 0px !important;
         font-size: 15px;
+        text-align: left;
+        font-family: OpenSans;
+        color: #242D3C;
+    }
+    
+    .img-user {
+        border-radius: 50% !important;
     }
     
     .panel-info {
@@ -380,14 +394,17 @@
     }
     
     .thumbnail-details {
-        max-width: 80%;
-        margin: 20px 0px 20px 35px;
-        padding: 2px;
+        max-width: 280px !important;
+        max-height: 380px;
+        padding: 10px !important;
+        margin-left: 50px;
+        border-radius: 5px !important;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 15px 0 rgba(0, 0, 0, 0.12) !important;
     }
     
-    .row-details {
-        margin-right: 20px !important;
-        margin-left: 20px !important;
+    .img-details {
+        width: 95%;
+        max-height: 350px !important;
     }
     
     .row-house,
@@ -396,21 +413,66 @@
     .row-list,
     .row-genre,
     .row-admin {
-        margin-top: 65px !important;
+        margin-top: 45px !important;
     }
     
     .row-home {
         margin-top: 10px !important;
     }
     
-    #description p,
-    #additional .table tbody tr td,
+    .col-descript {
+        margin-top: 10px;
+        top: 10px !important;
+    }
+    
+    .col-info {
+        top: 10px !important;
+        margin-top: 25px;
+    }
+    
+    .h-comt {
+        margin-bottom: 5px;
+        margin-top: 20px;
+    }
+    
+    .h-comt b {
+        font-family: Cuprum;
+        letter-spacing: 0.5px;
+        color: #242D3C;
+        margin-left: 15px;
+    }
+    
+    .col-descript .panel-info,
+    .col-info .panel-info {
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 15px 0 rgba(0, 0, 0, 0.12) !important;
+    }
+    
+    .full-descript p {
+        font-size: 14px !important;
+    }
+    
     form label,
     form textarea,
     .well-comt p,
     .btn,
     .input {
         font-family: Roboto;
+    }
+    
+    .user-name {
+        font-family: OpenSans;
+        color: #fff;
+    }
+    
+    .date {
+        font-family: OpenSans;
+        color: #242D3C;
+        font-size: 13px;
+        text-align: left
+    }
+    
+    .lines {
+        border-color: #fff !important;
     }
     
     .products {
@@ -426,11 +488,22 @@
         font-size: 16px !important;
     }
     
-    textarea {
+    .textarea {
+        margin-top: 10px !important;
         border-color: #ccc;
-        padding: 10px 17px;
+        padding: 10px 15px;
         font-size: 16px !important;
-        color: #fff !important;
+        color: #555 !important;
+        width: 100%;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 15px 0 rgba(0, 0, 0, 0.12) !important;
+    }
+    
+    .rate {
+        margin-left: 15px;
+    }
+    
+    .rate>span {
+        outline: none;
     }
     
     textarea:focus,
@@ -438,13 +511,15 @@
         border-color: transparent !important;
     }
     
-    .btn-md {
+    .btn-post {
         float: right !important;
         position: relative;
-        left: -35px;
+        left: 0px;
+        top: 10px;
         padding-left: 15px;
         padding-right: 15px;
         font-size: 16px !important;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 15px 0 rgba(0, 0, 0, 0.12) !important;
     }
     
     ul.nav-tabs {
@@ -599,6 +674,53 @@
         font-size: 18px;
     }
     
+    .try {
+        background-color: #242D3C !important;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 15px 0 rgba(0, 0, 0, 0.12) !important;
+    }
+    
+    .sale {
+        margin-left: 15px;
+    }
+    
+    .b-author {
+        font-family: Cuprum;
+        letter-spacing: 0.5px;
+    }
+    
+    .au {
+        color: #2BBBAD;
+    }
+    
+    .b-title,
+    .line {
+        margin-top: 10px !important;
+    }
+    
+    .sell-price {
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+        font-family: OpenSans;
+    }
+    
+    .b-author,
+    .line,
+    .pre-price {
+        margin-bottom: 10px !important;
+    }
+    
+    .add-cart {
+        width: 20% !important;
+        border: none !important;
+        border-bottom: 1px solid #ccc !important;
+    }
+    
+    .well-title {
+        background-color: #fff !important;
+        margin: 15px 0 !important;
+        border-radius: 4px !important;
+    }
+    
     .nav-pills>li>a {
         border: 1px solid #fff !important;
         color: #888 !important;
@@ -614,27 +736,14 @@
     }
     
     .col-break {
-        background-color: #c8c8a9 !important;
-        height: 577.344px !important;
+        height: auto;
         width: 20px !important;
         padding-left: 0px !important;
         padding-right: 0px !important;
     }
     
-    .thumbnail-details {
-        margin-left: -5px;
-        margin-top: 15px;
-        margin-bottom: 15px;
-        margin-right: 10px;
-    }
-    
-    .container-details {
-        margin-top: 20px;
-    }
-    
-    .row-details {
-        margin-top: 20px;
-        margin-bottom: 20px;
+    .col-title {
+        background-color: #fff;
     }
     
     .container-title {
@@ -826,6 +935,26 @@
     
     .pre-price {
         text-decoration: line-through;
+        font-family: OpenSans;
+    }
+    
+    .sell-price {
+        color: #f75353;
+    }
+    
+    .short-descript {
+        max-height: 80px;
+        margin-bottom: 0px !important;
+        overflow: hidden;
+    }
+    
+    .bread-crumb {
+        border-radius: 4px !important;
+    }
+    
+    .short-descript span,
+    .short-descript p {
+        font-size: 13px;
     }
     
     .input-group-btn>.form-control {
@@ -930,7 +1059,7 @@
     }
     
     .glyphicon-star {
-        color: #fbc02d;
+        color: yellow;
     }
     
     .col-list .panel-info {
@@ -1024,7 +1153,8 @@
         text-shadow: -0.5px -0.5px #f75353;
     }
     
-    .title-flex {
+    .title-flex,
+    .b-title {
         font-family: OpenSans;
         color: #242D3C
     }
