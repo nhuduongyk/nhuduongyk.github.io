@@ -1,4 +1,4 @@
-<div class="container" ng-init="search()">
+<div class="container container-title" ng-init="search()">
     <div class="row row-main-search">
         <div class="col-md-12 hidden-xs">
             <ol class="breadcrumb bread-crumb">
@@ -32,10 +32,10 @@
                     <div class="row">
                         <div class="fillter">
                             <label for="sort">Sort by:</label>
-                            <select name="sort" id="sort">
-                                <option value="">Name</option>
-                                <option value="">Price</option>
-                                <option value="">Rate</option>
+                            <select name="sort" id="sort" ng-model="sortby">
+                                <option value="title">Tên Sách</option>
+                                <option value="sellingPrice">Giá cả</option>
+                                <option value="author">Tác giả</option>
 	 		                </select>
                             <label for="">View:</label>
                             <button class="btn btn-default btn-sm" ng-click="setView('list')" type="button"><i class="fa  fa-th-list"></i></button>
@@ -47,23 +47,25 @@
                         <h3>{{result}}</h3>
                     </div>
                     <div class="row row-search text-center">
-                        <div id="column-search" ng-class="isSelectedView('block')?'col-md-3': 'col-sm-12 '   " ng-repeat="book in books" style="margin-top: 10px;">
-                            <div ng-class="isSelectedView('block')?'':'item-flex'">
-                                <div ng-class="isSelectedView('block')? 'thumnail thumnail-gallery':'img-flex'">
-                                    <img ng-src="{{book.images.main}}" ng-class="isSelectedView('block')? 'thumnail thumnail-gallery':'img-list'" alt="">
-                                </div>
-
-                                <div ng-class="isSelectedView('block')? '':'info-flex'">
+                        <div id="column-search" ng-class="isSelectedView('block')?'col-sm-3 col-md-3': 'col-sm-12 col-md-12'   " ng-repeat="book in filteredBooks| orderBy : sortby" style="margin-top: 10px;">
+                            <a href="#/books/details/{{book._id}}">
+                                <div ng-class="isSelectedView('block')?'thumbnail thumnail-gallery':'item-flex'">
+                                    <div ng-class="isSelectedView('block')? '':'img-flex'">
+                                        <img ng-src="{{book.images.main}}" ng-class="isSelectedView('block')? 'imgList':'img-list'" alt="">
+                                    </div>
+                            </a>
+                            <div ng-class="isSelectedView('block')? '':'info-flex'">
+                                <a href="#/books/details/{{book._id}}">
                                     <h5 ng-class="isSelectedView('block')? 'title':'title-flex'">{{book.title | limitTo:30}}<span class="dote" ng-show="book.title.length>25">...</span></h5>
                                     <h6 ng-class="isSelectedView('block')? 'author':'author-flex'">{{book.author}}</h6>
                                     <hr ng-show="isSelectedView('list')" class="line-flex" style="margin-bottom: 5px;" />
                                     <p ng-show="isSelectedView('list')" class="descript" ta-bind ng-model="book.shortDescription"></p>
-                                    <hr ng-show="isSelectedView('list')" class="line-flex" />
-                                    <h5 ng-class="isSelectedView('block')? 'price':'price-flex'">{{book.sellingPrice|currency:"$":0}}</h5>
-                                    <button class="btn btn-buy" ng-click="booksctrl.addCart(book)"><i class="fa fa-shopping-cart" style="font-size: 20px"></i> </button>
-                                    <button class="btn btn-like "><i class="fa fa-heart" style="font-size: 16px" ></i></button>
-
-                                </div>
+                                    <hr ng-class="isSelectedView('block')? '':'line-flex'" />
+                                    <h5 ng-class="isSelectedView('block')? 'price':'price-flex'">{{book.sellingPrice|number:0}} <u>đ</u></h5>
+                                </a>
+                                <button class="btn btn-buy" ng-click="booksctrl.addCart(book)"><i class="fa fa-shopping-cart" style="font-size: 20px"></i> </button>
+                                <button class="btn btn-like "><i class="fa fa-heart" style="font-size: 16px" ></i></button>
+                            </div>
 
                             </div>
                         </div>
@@ -71,7 +73,7 @@
 
 
                     <div class="row row-pagination ">
-                        <ul uib-pagination total-items="bigTotalItems " ng-model="categoryctrl.bigCurrentPage " max-size="categoryctrl.maxSize " class="pagination-sm pagination-danger " boundary-link-numbers="true "></ul>
+                        <ul uib-pagination total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" max-size="maxSize" class="pagination-sm pagination-danger" boundary-link-numbers="true" next-text="Trang kế" previous-text="Trang trước" ng-click="changePage()"></ul>
                     </div>
 
                 </div>

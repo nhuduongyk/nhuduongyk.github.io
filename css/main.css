@@ -10,6 +10,24 @@
         border-radius: 0px !important;
     }
     
+    .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        overflow: hidden;
+        z-index: 2000;
+        background: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .loader {
+        margin: auto;
+    }
+    
     .navbar {
         border-radius: 0px;
         letter-spacing: 2px;
@@ -136,6 +154,23 @@
         height: 75px;
     }
     
+    .userAvatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50% !important;
+    }
+    
+    .dropdown-user {
+        margin-top: 0px !important;
+    }
+    
+    .dropdown-user>a {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        font-family: Roboto !important;
+        font-size: 14px !important;
+    }
+    
     a>#logo {
         margin-top: -15px;
         margin-left: 20px;
@@ -156,12 +191,24 @@
     
     .navbar li a,
     .navbar {
-        color: white !important;
+        color: white;
     }
     
     .navbar-nav>li a:hover {
         color: #f75353 !important;
         text-shadow: -1px -1px #f75353;
+    }
+    
+    .dropdown-menu>li>a {
+        color: #fff !important;
+        font-size: 16px !important;
+    }
+    
+    .dropdown-menu li a:hover,
+    .dropdown-menu li a:focus {
+        color: #f75353 !important;
+        background-color: #fff !important;
+        text-shadow: transparent;
     }
     
     ul li a,
@@ -295,6 +342,7 @@
     }
     
     .thumbnail-comt {
+        border: none !important;
         border-radius: 5px !important;
         background-color: #566271 !important;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 15px 0 rgba(0, 0, 0, 0.12) !important;
@@ -773,8 +821,12 @@
         margin-bottom: 7.5px;
     }
     
+    .panel-info-2 {
+        margin-top: 20px;
+    }
+    
     footer {
-        margin-top: 50px;
+        margin-top: 10%;
     }
     
     label {
@@ -905,11 +957,13 @@
     }
     
     .flip .card {
+        max-height: 330px;
         height: 100%;
         -webkit-transform-style: preserve-3d;
         -webkit-transition: 0.5s;
         transform-style: preserve-3d;
         transition: 0.5s;
+        background-color: transparent !important;
     }
     
     .flip .card .face {
@@ -929,6 +983,10 @@
         transform: rotatey(-180deg);
     }
     
+    .panel-card {
+        max-height: 500px !important;
+    }
+    
     .inner {
         margin: 0px !important;
     }
@@ -936,6 +994,21 @@
     .pre-price {
         text-decoration: line-through;
         font-family: OpenSans;
+    }
+    
+    .fliper-btn {
+        color: #242D3C !important;
+        font-family: Cuprum !important;
+        letter-spacing: 0px;
+    }
+    
+    .sign-info {
+        letter-spacing: 0.2px;
+    }
+    
+    .link-avatar {
+        margin: 5px;
+        padding-left: 5px;
     }
     
     .sell-price {
@@ -974,9 +1047,17 @@
         border: none !important;
     }
     
+    .fillter {
+        margin-left: 15px;
+    }
+    
     .glyphicon-search {
         top: -7px !important;
         left: -13px;
+    }
+    
+    .panel-heading {
+        min-height: 65px;
     }
     
     select.form-control.search.select-search {
@@ -1067,8 +1148,8 @@
     }
     
     .thumnail-gallery {
-        width: 185px !important;
-        height: 454.344px !important;
+        min-width: 185px !important;
+        min-height: 454.344px !important;
     }
     
     .imgList {
@@ -1243,6 +1324,27 @@
     
     .btn-date {
         height: 40px;
+    }
+    
+    .thumb-user {
+        margin-bottom: 0px !important;
+        border-radius: 5px !important;
+    }
+    
+    .thumb-card {
+        padding: 20px !important;
+    }
+    
+    .username {
+        margin-top: 0px !important;
+        font-family: OpenSans !important;
+        color: #2BBBAD;
+    }
+    
+    .main {
+        font-family: OpenSans;
+        font-weight: 50 !important;
+        text-transform: none !important;
     }
     
     @media (min-width: 992px) {

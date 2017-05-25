@@ -17,7 +17,7 @@
         <div class="col-md-9 col-md-home">
             <!--Section Jumbotron-->
             <div class="row">
-                <div class="col-md-12" ng-init="getBanners()">
+                <div class="col-md-12" ng-init="getBanners(); getBooks()">
                     <div style="height: 305px">
                         <div uib-carousel active="active" interval="myInterval">
                             <div uib-slide ng-repeat="banner in slides" index="$index">
@@ -29,14 +29,36 @@
             </div>
             <!--Section HotBooks...-->
             <div class="row row-best ">
-                <div class="col-md-12 col-best " style="top: 20px; background-color: #242D3C !important; ">
+                <div class="col-md-12 col-best " style="top: 20px;">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4><b>SÁCH MỚI PHÁT HÀNH</b></h4>
+                        </div>
+                        <div class="panel-body text-center">
+                            <div class="row row-books">
+                                <div class="col-md-3 col-gallery" ng-repeat="book in books|orderBy: releaseDate:true">
 
+                                    <div class="thumbnail thumnail-gallery">
+                                        <a href="#/books/details/{{book._id}}">
+                                            <img ng-src={{book.images.main}} class="imgList">
+                                            <h5 class="title"><b>{{book.title|limitTo:30}}<span class="dote" ng-show="book.title.length>30">...</span></b></h5>
+                                            <h6 class="author">{{book.author}}</h6>
+                                            <h5 class="price">{{book.sellingPrice|number:0}} <u>đ</u></h5>
+                                        </a>
+                                        <hr/>
+                                        <button class="btn btn-buy" ng-click="addCart(book)"><span class="glyphicon glyphicon-shopping-cart"></span></button>
+                                        <button class="btn btn-like" ng-click="like(book)"><span class="glyphicon glyphicon-heart"></span></button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
 
             </div>
         </div>
     </div>
-</div>
-
-</div>
 </div>

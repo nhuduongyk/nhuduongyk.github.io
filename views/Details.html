@@ -23,7 +23,7 @@
                 <div class="well well-title">
                     <h3 class="b-title"><strong>{{book.title}}</strong></h3>
                     <h5 class="b-author au">{{book.author}}</h5>
-                    <span uib-rating ng-model="rateAvr" max="max" read-only="true" on-hover="hoveringOver(value)"></span>
+                    <span uib-rating class="rate" ng-model="rateAvr" max="max" read-only="true" on-hover="hoveringOver(value)"></span>
                     <hr class="line" />
                     <h5 class="pre-price">{{book.previousPrice|number:0}} <u>đ</u><span class="label label-danger sale"> Tiết kiệm: {{sale}} %</span></h5>
                     <h4 class="sell-price">{{book.sellingPrice|number:0}} <u>đ</u></h4>
@@ -93,7 +93,7 @@
 
                                 <tr>
                                     <td>Ngày xuất bản</td>
-                                    <td>{{book.createDate|date:"dd/MM/yyyy"}}</td>
+                                    <td>{{book.releaseDate|date:"dd/MM/yyyy"}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -108,19 +108,18 @@
 
         <div class="row row-home">
             <div class="col-md-12">
-                <form name="cmtForm" ng-submit="addComment(book)">
+                <form name="cmtForm" ng-submit="addComment(book)" novalidate>
                     <h5 class="h-comt"><b>Đánh Giá Của Bạn</b><span uib-rating class="rate" ng-model="comment.rate" max="max" read-only="false" on-hover="hoveringOver(value)"></span></h5>
-
-                    <h5 class="h-comt"><b>Nhận Xét Của Bạn</b></h5>
-
+                    <h5 class="h-comt"><b>Nhận Xét Của Bạn <span ng-show="postForm.title.$invalid && !postForm.title.$pristine " class="text-danger"> Hãy để lại nhận xét</span></b></h5>
                     <textarea ng-model="comment.commentBody" name="commentBody" ng-required="true" class="textarea" rows="4" placeholder="Để lại nhận xét..."></textarea>
-
-                    <button ng-disabled="!isLogged()" class="btn btn-post" type="submit">Đăng</button>
+                    <span ng-show="cmtForm.commentBody.$invalid && !cmtForm.commentBody.$pristine " class="glyphicon glyphicon-remove form-control-feedback check-position"></span>
+                    <i ng-show="!cmtForm.commentBody.$invalid" class="fa fa-check fa-check-set has-success form-control-feedback check-position"></i>
+                    <button ng-disabled="cmtForm.$invalid || !isLogged()" class="btn btn-post" type="submit">Đăng</button>
                 </form>
             </div>
         </div>
         <hr/>
-        <div class="row row-home" ng-repeat="comment in book.comments">
+        <div class="row row-home" ng-repeat="comment in book.comments| orderBy: createdDate:true">
             <div class="col-md-2 text-center">
                 <div class="thumbnail thumbnail-comt">
                     <h5 class="user-name">{{comment._user.name}}</h5>

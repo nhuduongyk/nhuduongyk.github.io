@@ -54,7 +54,7 @@
 
                         <div class="col-md-12 col-sm-12 form-group">
                             <label>Thể Loại</label>
-                            <select ng-model="genre.name" name="genre" ng-required="true" class="form-control " ng-options="genre as genre.name for genre in genres">
+                            <select ng-model="book.genre" name="genre" ng-required="true" class="form-control " ng-options="genre as genre.name for genre in genres track by genre._id">
                             <p ng-show="postForm.genre.$invalid " class="text-danger "> Hãy chọn thể loại.</p>  
                         </select>
                         </div>
@@ -136,10 +136,11 @@
                         <div class="col-sm-6 form-group">
                             <label class="control-label ">Ngày Xuất Bản:</label>
                             <p class="input-group date ">
-                                <input type="text" ng-model="book.releaseDate" class="form-control" popup-placement="top" uib-datepicker-popup="MM/dd/yyyy" ng-model="" is-open="popup2.opened" datepicker-options="" close-text="Close" />
+                                </span>
+                                <input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="book.releaseDate" popup-placement="top" is-open="popup2.opened" datepicker-options="" close-text="Close" />
                                 <span class="input-group-btn span-date ">
                                         <button type="button " class="btn btn-default btn-md btn-date" ng-click="open2() "><i class="glyphicon glyphicon-calendar "></i></button>
-                                     </span>
+                                </span>
                             </p>
                         </div>
 

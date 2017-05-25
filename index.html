@@ -43,9 +43,16 @@
     </style>
 </head>
 
-<body ng-controller="BooksController">
+<body ng-controller="BooksController" ng-init="getGenres(); init(); loadLogin()">
+
+    <div class="loading" ng-hide="loaded">
+        <div class="loader">
+            <img src="https://s-media-cache-ak0.pinimg.com/originals/90/80/60/9080607321ab98fa3e70dd24b2513a20.gif">
+        </div>
+
+    </div>
     <!--Section Header-->
-    <header ng-init="getGenres(); init(); loadLogin()">
+    <header>
         <nav class="navbar navbar-fluid navbar-fixed-top navbar-mine" role="navigation">
 
             <div class="container-fluid">
@@ -74,7 +81,6 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#/" class="active">HOME</a></li>
                     <li><a href="#books">BOOKS</a></li>
-                    <li><a href="#admin">ADMIN</a></li>
                     <li class="dropdown" ng-hide="isLogged()">
                         <button id="signUp" class="btn btn-sign" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Đăng Nhập</button>
                         <ul class="dropdown-menu dropdown-cart" role="menu">
@@ -104,8 +110,9 @@
                                         <div class="panel panel-info">
 
                                             <form class="form-horizontal" ng-submit="summitSignup()" method="post">
-                                                <div class="thumbnail thumbnail-user">
-                                                    <img src="img/userr.png" class="img-responsive" alt="img-ad" style="width: 30%">
+                                                <div class="thumbnail thumbnail-user" ng-init="signUpUser.avatarUrl='img/Userr.png'">>
+                                                    <img ng-src={{signUpUser.avatarUrl}} class="img-responsive" alt="img-ad" style="width: 30%">
+                                                    <input class="form-control" ng-model="signUpUser.avatarUrl" type="url" placeholder="Vui lòng nhập Url ảnh" />
                                                 </div>
 
                                                 <label>Thông Tin Cơ Bản</label>
@@ -130,73 +137,31 @@
                     <li ng-show="isLogged()" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown">{{user.name}}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">My Profile</a></li>
+                            <li><a href="#/profile">My Profile</a></li>
                             <li><a href="">My Order</a></li>
                             <li><a ng-click="logOut()">Logout</a></li>
                         </ul>
                     </li>
 
                     <li class="dropdown">
-                        <button id="cart" class="btn btn-cart" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart"></i> Giỏ Hàng  <span class="caret"></span></button>
+                        <button id="cart" class="btn btn-cart" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart"></i><span class="qty" >({{cart.length}})</span>  <span class="caret"></span></button>
                         <ul class="dropdown-menu dropdown-cart" role="menu">
-                            <li>
+                            <li ng-repeat="item in cart">
                                 <span class="item">
                                 <span class="item-left">
-                                    <img src="" alt="" />
+                                    <img ng-src="{{item.item.images.main}}" />
                                     <span class="item-info">
-                                        <span>Item name</span>
-                                <span>23$</span>
+                                        <span>{{item.qty}}</span>
+                                <span>{{item.item.sellingPrice}}đ</span>
                                 </span>
                                 </span>
                                 <span class="item-right">
-                                    <button class="btn btn-xs btn-danger pull-right">x</button>
-                                </span>
-                                </span>
-                            </li>
-                            <li>
-                                <span class="item">
-                                <span class="item-left">
-                                    <img src="" alt="" />
-                                    <span class="item-info">
-                                        <span>Item name</span>
-                                <span>23$</span>
-                                </span>
-                                </span>
-                                <span class="item-right">
-                                    <button class="btn btn-xs btn-danger pull-right">x</button>
-                                </span>
-                                </span>
-                            </li>
-                            <li>
-                                <span class="item">
-                                <span class="item-left">
-                                    <img src="" alt="" />
-                                    <span class="item-info">
-                                        <span>Item name</span>
-                                <span>23$</span>
-                                </span>
-                                </span>
-                                <span class="item-right">
-                                    <button class="btn btn-xs btn-danger pull-right">x</button>
-                                </span>
-                                </span>
-                            </li>
-                            <li>
-                                <span class="item">
-                                <span class="item-left">
-                                    <img src="" alt="" />
-                                    <span class="item-info">
-                                        <span>Item name</span>
-                                <span>23$</span>
-                                </span>
-                                </span>
-                                <span class="item-right">
-                                    <button class="btn btn-xs btn-danger pull-right">x</button>
+                                    <button class="btn btn-xs btn-danger pull-right" ng-click='removeCart($index)'>x</button>
                                 </span>
                                 </span>
                             </li>
                             <li class="divider"></li>
-                            <li><a class="text-center" href="">View Cart</a></li>
+                            <li><a class="text-center" href="#/cart">Giỏ Hàng Của Tôi</a></li>
                         </ul>
                     </li>
                 </ul>

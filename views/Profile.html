@@ -1,65 +1,84 @@
-<div class="container" ng-init="viewProfile()">
-    <div class="row ">
-        <div class="col-sm-3">
-            <div class="profile-sidebar wrap">
-
-                <div class="sidenav hidden-xs ">
-                    <div class="panel profile">
-                        <div class="panel-heading text-center">
-                            <div class="profile-userpic">
-                                <img ng-src="{{user.userAvatarUrl}}" class="img-circle img-raised img-responsive user-image" alt="">
-                            </div>
-                            <h5>
-                                <%= user._id %>
-                            </h5>
-                        </div>
-                        <div class="panel-body">
-                            <ul class="nav nav-pills nav-pills-danger nav-stacked">
-                                <li role="presentation"><a href="#/user">Quản Lý Tài Khoản</a></li>
-                                <li role="presentation"><a href="#/user/bill">Đơn Đặt Hàng</a></li>
-                                <li role="presentation"><a href="#/user/like">Danh Sách Yêu Thích</a></li>
-                            </ul>
-                        </div>
+<div class="container container-title" ng-init="viewProfile()">
+    <div class="row row-main-search">
+        <div class="col-sm-3 col-md-3 hiden-xs">
+            <div class="panel panel-info">
+                <div class="panel-heading text-center">
+                    <h4 style="color:#fff !important; font-family: OpenSans !important;"><b>{{user.name}}</b></h4>
+                </div>
+                <div class="panel-body">
+                    <div class="thumbnail thumbnail-comt thumb-user">
+                        <img ng-src="{{user.avatarUrl}}" class="img-responsive img-user" style="width:60%">
                     </div>
                 </div>
             </div>
+            <div class="panel panel-info panel-info-2">
+                <div class="panel-heading">
+                    <h4><b><i class="fa fa-home"></i>QUẢN LÝ TÀI KHOẢN</b></h4>
+                </div>
+                <div class="panel-body">
+                    <ul class="nav nav-pills nav-pills-danger nav-stacked">
+                        <li role="presentation"><a href="#/user">Quản Lý Tài Khoản</a></li>
+                        <li role="presentation"><a href="#/user/bill">Đơn Đặt Hàng</a></li>
+                        <li role="presentation"><a href="#/user/like">Danh Sách Yêu Thích</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-9">
-            <div class=" wrap">
-                <div class="heading  ">
-                    <h5>Thông Tin Tài Khoản</h5>
-                </div>
-                <div class="profile-content" ng-show="!editProfie">
-                    <h4>
-                        <%= user._id %>
-                    </h4>
-                    <p>Email:
-                        <%= user.local.password %>
-                    </p>
-                    <button class="btn btn-success" ng-click="editProfie=true"> Thay đổi</button>
+
+        <div class="col-sm-9 col-md-9 col-xs-10">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4><b>Thông Tin Tài Khoản</b></h4>
                 </div>
 
-                <form class="profile-content" name="formProfile" action="post" ng-show="editProfie" novalidate>
 
-                    <div class="form-group">
-                        <input type="text" name="username" ng-model="editUser.userName" class="form-control" placeholder="Tên" ng-required="true" minlength="5">
-                        <p ng-show="formProfile.username.$invalid && !formProfile.username.$pristine" class="text-danger"> Tên không hợp lệ</p>
+                <div class="panel-body">
+                    <div class="thumbnail thumb-user thumb-card" ng-show="!editProfie">
+                        <h4 class="username">{{user.name}}</h4>
+                        <hr class="line" />
+                        <h6 class="main">Email: {{user.email}}</h6>
+                        <h6 class="main">Địa chỉ: 40/8 C8 Chung cư Tăng Bạt Hổ, phường 11, quận Bình Thạnh, Tp HCM </h6>
+                        <h6 class="main">Điện thoại: 0986643851</h6>
+                        <hr class="line" />
+                        <button class="btn btn-warning" ng-click="editProfie=true"> Thay đổi</button>
                     </div>
+                    <form class="profile-content" name="formProfile" method="post" ng-submit="updateUser()" ng-show="editProfie" novalidate>
+                        <div class="thumbnail thumbnail-user">
+                            <img ng-src={{editProfile.avatarUrl}} class="img-responsive" alt="img-ad" style="width: 30%">
+                            <input class="form-control" ng-model="editProfile.avatarUrl" type="url" placeholder="Vui lòng nhập Url ảnh" />
+                        </div>
+                        <div class="form-group" ng-class="(formProfile.username.$invalid && !formProfile.username.$pristine)? 'has-error has-feedback': 'has-success' ">
+                            <label class="control-label">Người dùng:<span ng-show="formProfile.username.$invalid && !formProfile.username.$pristine" class="text-danger"> Tên không hợp lệ.</span></label>
+                            <input type="text" name="username" ng-model="editProfile.name" class="form-control" placeholder="Nhập Tên" ng-required="true" minlength="5">
+                            <span ng-show="formProfile.username.$invalid && !formProfile.username.$pristine " class="glyphicon glyphicon-remove form-control-feedback check-position"></span>
+                            <i ng-show="!formProfile.username.$invalid" class="fa fa-check fa-check-set has-success form-control-feedback check-position"></i>
+                        </div>
 
+                        <div class="form-group" ng-class="(formProfile.currentPassword.$invalid && !formProfile.currentPassword.$pristine)? 'has-error has-feedback': 'has-success' ">
+                            <label class="control-label">Mật khẩu cũ:<span ng-show="formProfile.password.$invalid && !formProfile.password.$pristine" class="text-danger"> Password không hợp lệ</span></label>
+                            <input type="password" name="currentPassword" ng-model="editProfile.currentPassword" class="form-control " minlength="5" placeholder="Password mới" ng-required="true" minlength="5">
+                            <span ng-show="formProfile.currentPassword.$invalid && !formProfile.currentPassword.$pristine " class="glyphicon glyphicon-remove form-control-feedback check-position"></span>
+                            <i ng-show="!formProfile.currentPassword.$invalid" class="fa fa-check fa-check-set has-success form-control-feedback check-position"></i>
+                        </div>
 
-                    <div class="form-group">
-                        <input type="password" name="password" ng-model="editUser.password" class="form-control " minlength="5" placeholder="Password" ng-required="true" minlength="5">
-                        <p ng-show="formProfile.password.$invalid && !formProfile.password.$pristine" class="text-danger"> Password không hợp lệ</p>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" name="passwordConfirm" ng-model="editUser.passwordConfirm" compare-to="editUser.password" class="form-control " placeholder="Nhập lại password" ng-required="true">
-                        <p ng-show="formProfile.passwordConfirm.$invalid && !formProfile.passwordConfirm.$pristine" class="text-danger"> Password không trùng</p>
+                        <div class="form-group" ng-class="(formProfile.password.$invalid && !formProfile.password.$pristine)? 'has-error has-feedback': 'has-success' ">
+                            <label class="control-label">Mật khẩu:<span ng-show="formProfile.password.$invalid && !formProfile.password.$pristine" class="text-danger"> Password không hợp lệ</span></label>
+                            <input type="password" name="password" ng-model="editProfile.password" class="form-control " minlength="5" placeholder="Password mới" ng-required="true" minlength="5">
+                            <span ng-show="formProfile.password.$invalid && !formProfile.password.$pristine " class="glyphicon glyphicon-remove form-control-feedback check-position"></span>
+                            <i ng-show="!formProfile.password.$invalid" class="fa fa-check fa-check-set has-success form-control-feedback check-position"></i>
+                        </div>
 
-                    </div>
-                    <div class="col-xs-12 col-md-6"><input class="btn btn-danger " type="reset" ng-click="editProfie=false"></div>
-                    <div class="col-xs-12 col-md-6"><input type="submit" value="Thay đổi" class="btn btn-success pull-right"></div>
+                        <div class="form-group" ng-class="(formProfile.passwordConfirm.$invalid && !formProfile.passwordConfirm.$pristine)? 'has-error has-feedback': 'has-success' ">
+                            <label class="control-label">Nhập lại mật khẩu:<span ng-show="formProfile.passwordConfirm.$invalid && !formProfile.passwordConfirm.$pristine" class="text-danger"> Password không trùng</span></label>
+                            <input type="password" name="passwordConfirm" ng-model="editProfile.password" compare-to="editProfile.password" class="form-control " placeholder="Nhập lại password" ng-required="true">
+                            <span ng-show="formProfile.passwordConfirm.$invalid && !formProfile.passwordConfirm.$pristine " class="glyphicon glyphicon-remove form-control-feedback check-position"></span>
+                            <i ng-show="!formProfile.passwordConfirm.$invalid" class="fa fa-check fa-check-set has-success form-control-feedback check-position"></i>
+                        </div>
+                        <div class="col-xs-12 col-md-6"><input class="btn btn-danger" type="reset" ng-click="editProfie=false"></div>
+                        <div class="col-xs-12 col-md-6"><input type="submit" ng-disable="formProfile.$invalid" value="Thay đổi" class="btn btn-success pull-right"></div>
 
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
