@@ -15,7 +15,7 @@
     <link href="GSD/assets/css/demo.css" rel="stylesheet" />
     <link rel="stylesheet" href="plugin/text-angular/textAngular.css">
     <link href="GSD/bootstrap3/css/font-awesome.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
@@ -196,6 +196,24 @@
                     </ul>
 
                 </div>-->
+
+    <div class="col-xs-12 visible-xs sidebar side-menu">
+        <div class="mini-submenu">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </div>
+        <div class="list-group">
+            <span href="#" class="list-group-item info active">DANH MỤC
+                    <span class="pull-right" id="slide-submenu">
+                        <i class="fa fa-times"></i>
+                    </span>
+            </span>
+            <a ng-repeat="genre in genres" href="#/category/{{genre._id}}" class="list-group-item">{{genre.name}}
+                </a>
+        </div>
+    </div>
+
     <div class="body-height">
         <div ng-view></div>
     </div>

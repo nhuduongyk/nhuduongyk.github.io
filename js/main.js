@@ -7,4 +7,19 @@ $(document).ready(function() {
         mainHeight = $(window).height() - $('footer').height();
     }
     $('.body-height').css('min-height', mainHeight);
+
+    $('.mini-submenu').on('click', function() {
+        $(this).next('.list-group').toggle('slide');
+        $('.mini-submenu').hide();
+    })
+
+    $('#slide-submenu').on('click', function() {
+        $(this).closest('.list-group').fadeOut('slide', function() {
+            $('.mini-submenu').fadeIn();
+        });
+
+    });
+
+
+
 })

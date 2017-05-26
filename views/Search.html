@@ -10,7 +10,7 @@
     </div>
 
     <div class="row row-home">
-        <div class="col-md-3 text-center sidebar hidden-xs">
+        <div class="col-md-3 col-sm-4 text-center sidebar hidden-xs">
             <div class="panel panel-info" ng-show="genres.length>0">
                 <div class="panel-heading">
                     <h4><b>DANH MỤC</b></h4>
@@ -23,7 +23,7 @@
             </div>
         </div>
 
-        <div class="col-md-9">
+        <div class="col-md-9 col-sm-8 col-xs-12">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h4><b>Kết quả tìm kiếm "{{textSearch}}"</b></h4>
@@ -47,7 +47,7 @@
                         <h3>{{result}}</h3>
                     </div>
                     <div class="row row-search text-center">
-                        <div id="column-search" ng-class="isSelectedView('block')?'col-sm-3 col-md-3': 'col-sm-12'" ng-repeat="book in filteredBooks|orderBy: sortby" style="margin-top: 10px;">
+                        <div id="column-search" ng-class="isSelectedView('block')?'col-xs-12 col-sm-6 col-md-3': 'col-xs-12 col-sm-12'" ng-repeat="book in filteredBooks|orderBy: sortby" style="margin-top: 10px;">
                             <a href="#/books/details/{{book._id}}">
                                 <div ng-class="isSelectedView('block')?'thumbnail thumnail-gallery':'item-flex'">
                                     <div ng-class="isSelectedView('block')? '':'img-flex'">

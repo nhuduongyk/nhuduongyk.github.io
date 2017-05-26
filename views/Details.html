@@ -1,7 +1,7 @@
 <div ng-init="getBook()">
     <div class="container container-title">
         <div class="row row-main-search">
-            <div class="col-md-12 hidden-xs">
+            <div class="col-md-12 col-sm-12 hidden-xs">
                 <ol class="breadcrumb bread-crumb">
                     <li class="breadcrumb-item"><a href="#/">Home</a></li>
                     <li class="breadcrumb-item"><a href="#/books">Kho Sách</a></li>
@@ -12,14 +12,14 @@
         </div>
 
         <div class="row row-home">
-            <div class="col-md-4 col-img">
+            <div class="col-md-4 col-sm-5 col-xs-12 col-img">
                 <div class="thumbnail thumbnail-details">
                     <img ng-src={{book.images.main}} class="img-details">
                 </div>
             </div>
-            <div class="col-md-1 col-offset-1 col-xs-0 col-break">
+            <div class="col-md-1 col-offset-1 col-xs-0 col-sm-1 col-break">
             </div>
-            <div class="col-md-7 col-title try">
+            <div class="col-md-7 col-sm-6 col-xs-12 col-title try">
                 <div class="well well-title">
                     <h3 class="b-title"><strong>{{book.title}}</strong></h3>
                     <h5 class="b-author au">{{book.author}}</h5>
@@ -33,7 +33,7 @@
                     <hr/>
                     <div class="input-group-btn">
                         <label>Số lượng</label><input type="number" class="form-control add-cart" ng-model="qty" min="0" />
-                        <button class="btn btn-buy" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG </button>
+                        <button class="btn btn-buy" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> ĐẶT HÀNG</button>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
 
 
         <div class="row row-home">
-            <div class="col-md-12 col-descript">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-descript">
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h4><b>GIỚI THIỆU SÁCH</b></h4>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 col-info">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-info">
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h4><b>THÔNG TIN CHI TIẾT</b></h4>
@@ -97,7 +97,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button class="btn btn-buy" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> MUA </button>
                     </div>
 
                 </div>
@@ -107,7 +106,7 @@
 
 
         <div class="row row-home">
-            <div class="col-md-12">
+            <div class="col-md-12 col-xs-12 col-sm-12">
                 <form name="cmtForm" ng-submit="addComment(book)" novalidate>
                     <h5 class="h-comt"><b>Đánh Giá Của Bạn</b><span uib-rating class="rate" ng-model="comment.rate" max="max" read-only="false" on-hover="hoveringOver(value)"></span></h5>
                     <h5 class="h-comt"><b>Nhận Xét Của Bạn <span ng-show="postForm.title.$invalid && !postForm.title.$pristine " class="text-danger"> Hãy để lại nhận xét</span></b></h5>
@@ -120,14 +119,14 @@
         </div>
         <hr/>
         <div class="row row-home" ng-repeat="comment in book.comments| orderBy: createdDate:true">
-            <div class="col-md-2 text-center">
+            <div class="col-md-2 col-xs-3 col-sm-3 text-center">
                 <div class="thumbnail thumbnail-comt">
                     <h5 class="user-name">{{comment._user.name}}</h5>
                     <img ng-src={{comment._user.avatarUrl}} class="img-responsive img-user" width="65%">
                 </div>
             </div>
 
-            <div class="col-md-10">
+            <div class="col-md-10 col-xs-9 col-sm-9">
                 <div class="well well-comt">
                     <p class="date">{{comment.createdDate|date:"dd/MM/yyyy"}} - <span uib-rating ng-model="comment.rate" max="max" read-only="true" on-hover="hoveringOver(value)"></span></p>
                     <hr class="line lines" />
