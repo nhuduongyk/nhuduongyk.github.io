@@ -47,7 +47,7 @@
                         <h3>{{result}}</h3>
                     </div>
                     <div class="row row-search text-center">
-                        <div id="column-search" ng-class="isSelectedView('block')?'col-sm-3 col-md-3': 'col-sm-12 col-md-12'   " ng-repeat="book in filteredBooks| orderBy : sortby" style="margin-top: 10px;">
+                        <div id="column-search" ng-class="isSelectedView('block')?'col-sm-3 col-md-3': 'col-sm-12'" ng-repeat="book in filteredBooks|orderBy: sortby" style="margin-top: 10px;">
                             <a href="#/books/details/{{book._id}}">
                                 <div ng-class="isSelectedView('block')?'thumbnail thumnail-gallery':'item-flex'">
                                     <div ng-class="isSelectedView('block')? '':'img-flex'">
@@ -72,8 +72,8 @@
                     </div>
 
 
-                    <div class="row row-pagination ">
-                        <ul uib-pagination total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" max-size="maxSize" class="pagination-sm pagination-danger" boundary-link-numbers="true" next-text="Trang kế" previous-text="Trang trước" ng-click="changePage()"></ul>
+                    <div class="row row-pagination text-center">
+                        <ul uib-pagination total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" max-size="maxSize" class="pagination-sm pagination-warning" boundary-link-numbers="true" next-text="Trang kế" previous-text="Trang trước" ng-click="changePage()"></ul>
                     </div>
 
                 </div>

@@ -88,6 +88,7 @@ app.controller('BooksController', ['$scope', 'bookservice', '$http', '$location'
     $scope.search = function() {
         $http.get(root + '/api/books/' + $scope.searchBy + '/' + $scope.textSearch).success(function(response) {
             $scope.books = response;
+            $scope.paging();
             if ($scope.books.length > 0) {
                 $scope.found = true;
             } else {
@@ -169,13 +170,8 @@ app.controller('BooksController', ['$scope', 'bookservice', '$http', '$location'
     };
     $scope.disabled = false;
 
-    $scope.try = function() {
-            $cookieStore.put('nhu', 'dep');
-            var value = $cookieStore.get('nhu')
-            console.log(value);
-            $cookieStore.remove('nhu')
-        }
-        /*-------Add Books--------*/
+
+    /*-------Add Books--------*/
     $scope.addBook = function() {
         console.log($scope.book);
         $http.post(root + '/api/books/', $scope.book).success(function(response) {
@@ -232,7 +228,7 @@ app.controller('BooksController', ['$scope', 'bookservice', '$http', '$location'
                 $scope.user = $cookieStore.get('user');
                 $scope.token = $cookieStore.get('token');
                 //Redirect here
-                $location.url("/")
+                //$location.url("/")
             } else {
                 //Raise Error
                 alert(response.message);
@@ -251,7 +247,7 @@ app.controller('BooksController', ['$scope', 'bookservice', '$http', '$location'
                 $scope.user = $cookieStore.get('user');
                 $scope.token = $cookieStore.get('token');
                 //Redirect here
-                $location.url("/")
+                //$location.url("/")
             } else {
                 //Raise Error
                 alert(response.message);
@@ -274,104 +270,99 @@ app.controller('BooksController', ['$scope', 'bookservice', '$http', '$location'
     $scope.updateUser = function() {
             $http.put(root + '/api/users/', $scope.editProfile).success(function(response) {
                 console.log('success');
-                $scope.user = $cookieStore.get('user');
-                $scope.token = $cookieStore.get('token');
                 $scope.user = response;
+                $cookieStore.put('user', response.user);
+                $scope.user = $cookieStore.get('user');
+                $location.url("/")
             }).error(function(data, status, headers, config) {
                 console.log(data, status, headers, config);
             });;
         }
         /*----Cart----*/
-        /*$scope.qty = 1;
-        $scope.total = 0;
+    $scope.qty = 1;
+    $scope.total = 0;
+    $scope.sum = function() {
+        bookservice.total.totalQty = 0;
+        for (var i = 0; i < bookservice.cart.length; i++) {
+            $scope.total += bookservice.cart[i].item.sellingPrice * bookservice.cart[i].qty;
+            bookservice.total.totalQty += bookservice.cart[i].qty;
+        }
+        $scope.all = bookservice.total;
 
-        $scope.sum = function() {
-            bookservice.total.totalQty = 0;
-            for (var i = 0; i < bookservice.cart.length; i++) {
-                $scope.total += bookservice.cart[i].item.sellingPrice * bookservice.cart[i].qty;
-                bookservice.total.totalQty += bookservice.cart[i].qty;
+    }
+    $scope.sum();
+
+
+    $scope.addCart = function(item) {
+        if ($scope.qty > 0) {
+            if (bookservice.cart.length > 0) {
+                for (var i = 0; i < bookservice.cart.length; i++) {
+                    if (bookservice.cart[i].item.sku === item.sku) {
+                        $scope.addedItem = true;
+                        bookservice.cart[i].qty += $scope.qty;
+                        bookservice.item[i].quantity += $scope.qty;
+                    }
+                }
+                if ($scope.addedItem) {
+                    $scope.addedItem = false;
+
+                } else {
+                    bookservice.cart.push({ item, qty: 1 });
+                    bookservice.item.push({ _book: item._id, price: item.sellingPrice, quantity: $scope.qty });
+                    console.log(item._id)
+                }
+            } else {
+                bookservice.cart.push({ item, qty: $scope.qty });
+                bookservice.item.push({ _book: item._id, price: item.sellingPrice, quantity: $scope.qty });
+                console.log(item._id)
             }
-            $scope.all = bookservice.total;
 
         }
         $scope.sum();
 
 
-        $scope.addCart = function(item) {
-            if ($scope.qty > 0) {
-
-                if (bookservice.cart.length > 0) {
-                    for (var i = 0; i < bookservice.cart.length; i++) {
-                        if (bookservice.cart[i].item.sku === item.sku) {
-                            $scope.addedItem = true;
-                            bookservice.cart[i].qty += $scope.qty;
-                            bookservice.item[i].quantity += $scope.qty;
-                        }
-
-
-                    }
-                    if ($scope.addedItem) {
-                        $scope.addedItem = false;
-
-                    } else {
-                        bookservice.cart.push({ item, qty: 1 });
-                        bookservice.item.push({ _book: item._id, price: item.sellingPrice, quantity: $scope.qty });
-                        console.log(item._id)
-                    }
-                } else {
-                    bookservice.cart.push({ item, qty: $scope.qty });
-                    bookservice.item.push({ _book: item._id, price: item.sellingPrice, quantity: $scope.qty });
-                    console.log(item._id)
-                }
-
-            }
-            $scope.sum();
-
-
+    }
+    $scope.cart = bookservice.cart;
+    $scope.back = function() {
+            $location.url("/books");
         }
-        $scope.cart = bookservice.cart;
+        /*------------order--------------*/
+    $scope.order = {};
+    $scope.order.books = [];
+    $scope.checkout = function() {
+        if ($scope.cart.length > 0) {
+            $scope.order._user = $scope.user._id;
+            $scope.order.books = bookservice.item;
+            $scope.order.total = $scope.total;
+            // bookservice.bills.push($scope.order);
+            console.log($scope.order)
 
-        /*------------order--------------
-        $scope.order = {};
-        $scope.order.books = [];
-        $scope.checkout = function() {
-            if ($scope.cart.length > 0) {
-
-                $scope.order._user = $scope.user._id;
-                $scope.order.books = bookservice.item;
-                $scope.order.total = $scope.total;
-                // bookservice.bills.push($scope.order);
-                console.log($scope.order)
-
-                $http.post(root + 'api/orders', $scope.order).success(function(response) {
-                    console.log('success');
-                    bookservice.item = [];
-                    bookservice.cart.splice(0, bookservice.cart.length);
-                    $scope.total = 0;
-                    $location.url("/")
-                }).error(function(data, status, headers, config) {
-                    console.log(data, status, headers, config);
-                });
-
-
-
-            }
+            $http.post(root + 'api/orders/', $scope.order).success(function(response) {
+                console.log('success');
+                bookservice.item = [];
+                bookservice.cart.splice(0, bookservice.cart.length);
+                $scope.total = 0;
+                $location.url("/")
+            }).error(function(data, status, headers, config) {
+                console.log(data, status, headers, config);
+            });
         }
+    }
 
-        $scope.changeQty = function(index) {
-            bookservice.item[index].qty = bookservice.cart[index].qty;
-            $scope.total = 0;
-            $scope.sum();
-        }
-        $scope.bills = bookservice.bills;
+    $scope.changeQty = function(index) {
+        bookservice.item[index].qty = bookservice.cart[index].qty;
+        $scope.total = 0;
+        $scope.sum();
+    }
+    $scope.bills = bookservice.bills;
 
-        $scope.removeCart = function(item) {
-            console.log(item.qty)
+    $scope.removeCart = function(item) {
+        console.log(item.qty)
 
-            bookservice.cart.splice(item, 1);
-            bookservice.item.splice(item, 1);
-            $scope.total = 0;
-            $scope.sum();
+        bookservice.cart.splice(item, 1);
+        bookservice.item.splice(item, 1);
+        $scope.total = 0;
+        $scope.sum();
 
-        }*/
+    }
 }]);

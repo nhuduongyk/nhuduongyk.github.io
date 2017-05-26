@@ -40,17 +40,24 @@ app.config(function($routeProvider) {
     })
 
     .when('/profile', {
-            templateUrl: 'views/Profile.html',
-            controller: 'BooksController'
-        })
-        .when('/user/Bill', {
-            templateUrl: 'views/Bill.html',
-            controller: 'BooksController'
-        })
-        .when('/user/like', {
-            templateUrl: 'views/Like.html',
-            controller: 'BooksController'
-        })
+        templateUrl: 'views/Profile.html',
+        controller: 'BooksController'
+    })
+
+    .when('/user/bill', {
+        templateUrl: 'views/Bill.html',
+        controller: 'BooksController'
+    })
+
+    .when('/user/like', {
+        templateUrl: 'views/Like.html',
+        controller: 'BooksController'
+    })
+
+    .when('/admin/order', {
+        templateUrl: 'views/Order.html',
+        controller: 'BooksController'
+    })
 });
 
 

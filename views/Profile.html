@@ -70,7 +70,7 @@
 
                         <div class="form-group" ng-class="(formProfile.passwordConfirm.$invalid && !formProfile.passwordConfirm.$pristine)? 'has-error has-feedback': 'has-success' ">
                             <label class="control-label">Nhập lại mật khẩu:<span ng-show="formProfile.passwordConfirm.$invalid && !formProfile.passwordConfirm.$pristine" class="text-danger"> Password không trùng</span></label>
-                            <input type="password" name="passwordConfirm" ng-model="editProfile.password" compare-to="editProfile.password" class="form-control " placeholder="Nhập lại password" ng-required="true">
+                            <input type="password" name="passwordConfirm" ng-model="editProfile.passwordConfirm" compare-to="editProfile.password" class="form-control " placeholder="Nhập lại password" ng-required="true">
                             <span ng-show="formProfile.passwordConfirm.$invalid && !formProfile.passwordConfirm.$pristine " class="glyphicon glyphicon-remove form-control-feedback check-position"></span>
                             <i ng-show="!formProfile.passwordConfirm.$invalid" class="fa fa-check fa-check-set has-success form-control-feedback check-position"></i>
                         </div>

@@ -32,8 +32,8 @@
                     <p ng-model="book.shortDescription" class="short-descript" ta-bind="text"></p>
                     <hr/>
                     <div class="input-group-btn">
-                        <label>Số lượng</label><input type="number" class="form-control add-cart" min="0" />
-                        <button class="btn btn-buy"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG </button>
+                        <label>Số lượng</label><input type="number" class="form-control add-cart" ng-model="qty" min="0" />
+                        <button class="btn btn-buy" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG </button>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button class="btn btn-buy"><i class="fa fa-shopping-cart"></i> MUA </button>
+                        <button class="btn btn-buy" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> MUA </button>
                     </div>
 
                 </div>
