@@ -17,53 +17,44 @@
                 </div>
                 <div class="panel-body">
                     <ul class="nav nav-pills nav-pills-danger nav-stacked">
-                        <li role="presentation"><a href="#/user">Quản Lý Tài Khoản</a></li>
+                        <li role="presentation"><a href="#/profile">Quản Lý Tài Khoản</a></li>
                         <li role="presentation"><a href="#/user/bill">Đơn Đặt Hàng</a></li>
-                        <li role="presentation"><a href="#/user/like">Danh Sách Yêu Thích</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-9 col-md-9">
+        <div class="col-xs-12 col-sm-9 col-md-9" ng-init="getUserOder()">
             <div class="panel panel-info">
                 <div class="panel-heading text-center">
                     <h4><b>THÔNG TIN ĐƠN HÀNG</b></h4>
                 </div>
-                <div class="panel-body">
-                    <div ng-repeat="bill in bills">
-                        <table class="table table-bordered table-hover rwd-table">
-                            <caption>Đơn hàng ngày {{bill.date| date:"dd/MM/yyyy"}}</caption>
-                            <thead>
-                                <tr>
-                                    <th class="hidden-xs"></th>
-                                    <th class=" ">Tên sách</th>
-                                    <th class="">Đơn giá</th>
-                                    <th class="">Số lượng</th>
-                                    <th class="">Thành tiền</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="item in bill.items" class="rowBook">
-                                    <td class="hidden-xs">
-                                        <div class="imgItem" style="width: 80%"><img ng-src="{{item.item.images.main}}" alt="" class="img-responsive hidden-xs" /></div>
-                                    </td>
-                                    <td class="" data-th="Tên sách">
-                                        <h6>{{item.item.title}}</h6>
-                                    </td>
-                                    <td class="price " data-th="Đơn giá">{{item.item.sellingPrice|number:0}} <u>đ</u></td>
-                                    <td class="" data-th="Sớ lượng">{{item.qty}}</td>
-                                    <td class="price " data-th="Thành tiền">{{item.item.sellingPrice*item.qty|number:0}} <u>đ</u></td>
+                <tbody>
+                    <div class="panel-body">
+                        <div>
+                            <table class="table table-bordered table-hover rwd-table">
+                                <caption></caption>
+                                <thead>
+                                    <tr>
+                                        <th class=" ">Tên sách</th>
+                                        <th class="">Đơn giá</th>
+                                        <th class="">Số lượng</th>
+                                        <th class="">Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="order in orders">
+                                    <tr ng-repeat="item in order.books" class="rowBook">
+                                        <td class="" data-th="Tên sách">
+                                            <h6 class="td-title">{{item._book.title}}</h6>
+                                        </td>
+                                        <td class="" data-th="Đơn giá">{{item.price|number:0}} <u>đ</u></td>
+                                        <td class="" data-th="Số lượng">{{item.quantity}}</td>
+                                        <th class="price " data-th="Thành tiền">{{item.price*item.quantity|number:0}} <u>đ</u></th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-                                </tr>
-                                <tr>
-                                    <th colspan="3">Tổng tiền</th>
-                                    <td colspan="2" data-th="Tổng tiền">{{bill.total|number:0}} <u>đ</u></td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
-
-                </div>
 
             </div>
         </div>

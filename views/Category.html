@@ -1,6 +1,6 @@
 <div class="container container-books" ng-init="getBooks()">
     <div class="row row-list">
-        <div class="col-md-3 text-center sidebar">
+        <div class="hidden-xs col-sm-3 col-md-3 text-center sidebar">
             <div class="panel panel-info" ng-show="genres.length>0">
                 <div class="panel-heading">
                     <h4><b>DANH MỤC</b></h4>
@@ -14,14 +14,14 @@
         </div>
 
 
-        <div class="col-md-9 col-list">
+        <div class="col-xs-12 col-sm-9 col-md-9 col-list">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h4><b>KHO SÁCH</b></h4>
                 </div>
                 <div class="panel-body text-center">
                     <div class="row row-books">
-                        <div class="col-md-3 col-gallery" ng-repeat="book in filteredBooks">
+                        <div class="col-md-3 col-sm-6 col-xs-12 col-gallery" ng-repeat="book in filteredBooks">
 
                             <div class="thumbnail thumnail-gallery">
                                 <a href="#/books/details/{{book._id}}">
@@ -39,7 +39,7 @@
 
                     </div>
                     <div class="row row-pagination text-center">
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 col-xs-12 col-md-12">
                             <ul uib-pagination total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" max-size="maxSize" class="pagination-sm pagination-danger" boundary-link-numbers="true" next-text="Trang kế" previous-text="Trang trước" ng-click="changePage()"></ul>
                         </div>
                     </div>

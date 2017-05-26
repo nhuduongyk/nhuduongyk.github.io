@@ -72,6 +72,12 @@ app.controller('BooksController', ['$scope', 'bookservice', '$http', '$location'
                         }
                     }
                 }
+                if ($scope.books.length > 0) {
+                    $scope.foundGenre = true;
+                } else {
+                    $scope.foundGenre = false;
+                    $scope.notFound = "Không có sách phù hợp với thể loại bạn tìm."
+                }
             })
         }
         /*-------Block/list---------- */
@@ -260,23 +266,27 @@ app.controller('BooksController', ['$scope', 'bookservice', '$http', '$location'
     $scope.init = function() {
         $scope.user = $cookieStore.get('user');
         $scope.token = $cookieStore.get('token');
+        $scope.editProfile = $cookieStore.get('user');
     }
 
     $scope.isLogged = function() {
             return $cookieStore.get('token') != undefined;
         }
         /*-------Users--------*/
-    $scope.editProfile = $scope.user;
+
     $scope.updateUser = function() {
-            $http.put(root + '/api/users/', $scope.editProfile).success(function(response) {
-                console.log('success');
-                $scope.user = response;
-                $cookieStore.put('user', response.user);
+            console.log($scope.user)
+            $http.put(root + 'api/users', $scope.user).success(function(response) {
+
+                console.log(response);
+                $scope.editProfile = response.user;
+                $scope.user = $scope.editProfile;
+                $cookieStore.put('user', $scope.editProfile);
                 $scope.user = $cookieStore.get('user');
-                $location.url("/")
+                window.location.href = '/';
             }).error(function(data, status, headers, config) {
                 console.log(data, status, headers, config);
-            });;
+            });
         }
         /*----Cart----*/
     $scope.qty = 1;
@@ -330,14 +340,15 @@ app.controller('BooksController', ['$scope', 'bookservice', '$http', '$location'
     $scope.order = {};
     $scope.order.books = [];
     $scope.checkout = function() {
-        if ($scope.cart.length > 0) {
+        if ($scope.cart.length > 0 && $scope.total > 0) {
+
             $scope.order._user = $scope.user._id;
             $scope.order.books = bookservice.item;
             $scope.order.total = $scope.total;
-            // bookservice.bills.push($scope.order);
+
             console.log($scope.order)
 
-            $http.post(root + 'api/orders/', $scope.order).success(function(response) {
+            $http.post(root + '/api/orders', $scope.order).success(function(response) {
                 console.log('success');
                 bookservice.item = [];
                 bookservice.cart.splice(0, bookservice.cart.length);
@@ -346,6 +357,9 @@ app.controller('BooksController', ['$scope', 'bookservice', '$http', '$location'
             }).error(function(data, status, headers, config) {
                 console.log(data, status, headers, config);
             });
+
+
+
         }
     }
 
@@ -358,11 +372,29 @@ app.controller('BooksController', ['$scope', 'bookservice', '$http', '$location'
 
     $scope.removeCart = function(item) {
         console.log(item.qty)
-
         bookservice.cart.splice(item, 1);
         bookservice.item.splice(item, 1);
         $scope.total = 0;
         $scope.sum();
 
+    }
+    $scope.getOrder = function() {
+        $http.get(root + '/api/orders').success(function(response) {
+            $scope.orders = response;
+
+        }).error(function(data, status, headers, config) {
+            console.log(data, status, headers, config);
+        });
+
+    }
+    $scope.getUserOder = function() {
+        console.log(root + '/api/orders/user/' + $scope.user._id)
+        $http.get(root + '/api/orders/user/' + $scope.user._id).success(function(response) {
+            $scope.orders = response;
+            console.log($scope.orders)
+
+        }).error(function(data, status, headers, config) {
+            console.log(data, status, headers, config);
+        });
     }
 }]);
