@@ -276,7 +276,7 @@ app.controller('BooksController', ['$scope', 'bookservice', '$http', '$location'
 
     $scope.updateUser = function() {
             console.log($scope.user)
-            $http.put(root + 'api/users', $scope.user).success(function(response) {
+            $http.put(root + '/api/users', $scope.user).success(function(response) {
 
                 console.log(response);
                 $scope.editProfile = response.user;
@@ -368,7 +368,7 @@ app.controller('BooksController', ['$scope', 'bookservice', '$http', '$location'
         $scope.total = 0;
         $scope.sum();
     }
-    $scope.bills = bookservice.bills;
+
 
     $scope.removeCart = function(item) {
         console.log(item.qty)
@@ -388,13 +388,57 @@ app.controller('BooksController', ['$scope', 'bookservice', '$http', '$location'
 
     }
     $scope.getUserOder = function() {
-        console.log(root + '/api/orders/user/' + $scope.user._id)
         $http.get(root + '/api/orders/user/' + $scope.user._id).success(function(response) {
             $scope.orders = response;
-            console.log($scope.orders)
 
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
         });
     }
+
+    /*-----like------
+
+     $scope.like = function(item) {
+  bookservice.liked = true;
+    if (bookservice.user.like.length > 0) {
+             for (var i = 0; i < bookservice.user.like.length; i++) {
+
+                 if (bookservice.user.like[i].sku === item.sku) {
+
+
+                     bookservice.user.like.splice(i, 1);
+
+                     console.log(bookservice.user.like);
+                     bookservice.liked = false;
+                 }
+             }
+             if (bookservice.liked) {
+                 bookservice.user.like.push(item);
+                bookservice.liked = true;
+
+        }
+
+         } else {
+         bookservice.user.like.push(item);
+         bookservice.liked = true;
+            console.log(bookservice.user.like)
+
+    }
+
+
+
+ }
+     $scope.user = bookservice.user;
+     $scope.checkLike = function(item) {
+             if (bookservice.user.like.length > 0) {
+                 for (var i = 0; i < bookservice.user.like.length; i++) {
+                     if (bookservice.user.like[i].sku === item.sku) {
+                         return true;
+
+
+                    }
+                 }
+           }
+
+         }*/
 }]);

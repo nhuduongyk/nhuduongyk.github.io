@@ -1,6 +1,6 @@
 app.service('bookservice', function() {
     this.cart = [];
-    this.bills = [];
     this.item = [];
     this.total = [];
+    this.liked = [];
 })

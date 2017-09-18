@@ -27,7 +27,9 @@
                         <div class="col-md-3 col-sm-6 col-xs-12 col-gallery" ng-repeat="book in books">
                             <div class="thumbnail thumnail-gallery">
                                 <a href="#/books/details/{{book._id}}">
-                                    <img ng-src={{book.images.main}} class="imgList">
+                                    <div class="img-frame">
+                                        <img ng-src={{book.images.main}} class="imgList">
+                                    </div>
                                     <h5 class="title"><b>{{book.title|limitTo:30}}<span class="dote" ng-show="book.title.length>30">...</span></b></h5>
                                     <h6 class="author">{{book.author}}</h6>
                                     <h5 class="price">{{book.sellingPrice|number:0}} <u>đ</u></h5>

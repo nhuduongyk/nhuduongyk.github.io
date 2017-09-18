@@ -50,7 +50,7 @@
                         <div id="column-search" ng-class="isSelectedView('block')?'col-xs-12 col-sm-6 col-md-3': 'col-xs-12 col-sm-12'" ng-repeat="book in filteredBooks|orderBy: sortby" style="margin-top: 10px;">
                             <a href="#/books/details/{{book._id}}">
                                 <div ng-class="isSelectedView('block')?'thumbnail thumnail-gallery':'item-flex'">
-                                    <div ng-class="isSelectedView('block')? '':'img-flex'">
+                                    <div ng-class="isSelectedView('block')? 'img-frame':'img-flex'">
                                         <img ng-src="{{book.images.main}}" ng-class="isSelectedView('block')? 'imgList':'img-list'" alt="">
                                     </div>
                             </a>
